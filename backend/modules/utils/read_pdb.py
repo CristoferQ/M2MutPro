@@ -4,7 +4,7 @@ con el fin de poder utilizarla en posteriores procesos...
 Recibe como entrada un codigo PDB, ademas del path donde se encuentra el mismo...
 '''
 from Bio.PDB.PDBParser import PDBParser
-#from proyect.CCProcesFile import document
+
 
 class processPDB():
     def __init__(self, codePDB, pathFile, namePDB, pathOutput):
