@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="../images/favicon.ico" type="image/ico" />
 
-    <title>CREATE</title>
+    <title>Create Job</title>
 
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,11 +25,13 @@
     <link href="../../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
+    <!-- bootstrap-valiator -->
+    
+    <link href="../../vendors/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
 
-    <script src="../js/jobs/createJob.js"></script>
+    
   </head>
 
   <body class="nav-md">
@@ -62,7 +64,7 @@
               <div class="menu_section">
                 <ul class="nav side-menu">
                   <li><a href="../index.html"><i class="fa fa-home"></i> Dashboard</a></li>
-                  <li><a href="index.html"><i class="fa fa-home"></i> Create Jobs</a></li>
+                  <li><a href="index.html"><i class="fa fa-home"></i> Create Job</a></li>
                 </ul>
               </div>
                   
@@ -128,28 +130,30 @@
                   
                   <div class="x_content">
                     <h3>Upload the csv file</h3>
-                    <form action="index.html" class="dropzone" style="cursor: pointer;"></form>
+                    <form id="frmAgregarFile" name="file" action="../php/uploadFile.php" class="dropzone" style="cursor: pointer;">
+                    </form>
                   </div>
-                  <div class="x_content">
-                    <h3>Upload the PDB file or ingress the PDB code</h3>
-                    
-                    <form action="index.html" class="dropzone" style="cursor: pointer;"></form>
-                    <br>
-                    <div class="item form-group">
-                      <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">PDB code</label>
-                      <div class="col-md-6 col-sm-6 ">
-                        <input id="middle-name" class="form-control" type="text" name="middle-name">
+                  <div class="x_content">  
+                    <h3>Upload the PDB file or enter the PDB code</h3>
+                    <form id="frmAgregarFile" name="file" action="../php/uploadFile.php" class="dropzone" style="cursor: pointer;">
+                      <div class="item form-group">
+                        <label for="pdbcode" class="col-form-label col-md-3 col-sm-3 label-align">PDB Code</label>
+                        <div class="col-md-6 col-sm-6 ">
+                          <input id="pdbcode" class="form-control" type="text" name="pdbcode">
+                        </div>
                       </div>
-                    </div>
+                    </form>
+                                 
                     <br>
                     <div class="item form-group">
                       <div class="col-md-6 offset-md-5">
-                        <button type="submit" class="form-horizontal btn btn-success">Submit</button>
+                        <form id="initNewJob" method="post">
+                          <button type="submit" id="processJob" class="form-horizontal btn btn-success">Create Job</button>
+                        </form>                        
                       </div>
                     </div>
-                    
-                    
                   </div>
+
                 </div>
               </div>
             </div>
@@ -170,6 +174,7 @@
       </div>
     </div>
 
+    
     <!-- jQuery -->
     <script src="../../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -211,6 +216,8 @@
     <script src="../../vendors/dropzone/dist/min/dropzone.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-	  
+    <script src="../../vendors/bootstrap-validator/bootstrapValidator.min.js"></script>
+    
+    <script src="../js/jobs/createJob.js"></script>
   </body>
 </html>

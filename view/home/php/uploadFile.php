@@ -5,11 +5,12 @@
 	$idUSer = "1";
 	#$idUSer = $_SESSION['userName'];
 	$archivo = $_FILES['file'];
+	
 
 	$templocation = $archivo["tmp_name"];
 	$name = $archivo["name"];
 
-	$pathMove = "/var/www/html/ShortTimeSeriesClustering/jobs/tmp/".$name;
+	$pathMove = "/var/www/html/M2MutPro/jobs/tmp/".$name;
 
 
 	if(!$templocation){
@@ -22,7 +23,7 @@
 		echo "Error al guardar el archivo";
 	}
 
-	$pathData = "/var/www/html/ShortTimeSeriesClustering/jobs/tmp/".$idUSer."_documentQueue.txt";
+	$pathData = "/var/www/html/M2MutPro/jobs/tmp/".$idUSer."_documentQueue.txt";
 	//finalmente escribimos un archivo de texto con el nombre de la imagen...
 	$file = fopen($pathData, "w");
 
