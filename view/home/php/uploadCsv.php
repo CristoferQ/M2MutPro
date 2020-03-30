@@ -23,12 +23,10 @@
 		echo "Error al guardar el archivo";
 	}
 
-	$pathData = "/var/www/html/M2MutPro/jobs/tmp/".$idUSer."_documentQueue.txt";
+	$pathData = "/var/www/html/M2MutPro/jobs/tmp/".$idUSer."_documentQueue1.txt";
 	//finalmente escribimos un archivo de texto con el nombre de la imagen...
 	$file = fopen($pathData, "w");
-
 	fwrite($file, "$name");
-
 	fclose($file);
 
  ?>

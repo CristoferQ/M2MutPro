@@ -1,13 +1,52 @@
 $(document).ready(function() {
 
+  $('#initNewJob').bootstrapValidator({
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+
+        percentage: {
+            validators: {
+                notEmpty: {
+                    message: 'The percentage is required'
+                },
+                regexp: {
+                    regexp: /^[0-9.]+$/,
+                    message: 'The percentage must be numeric values'
+                }
+            }
+        },
+
+        nameJob: {
+            validators: {
+                notEmpty: {
+                    message: 'The name of job is required'
+                }
+            }
+        },
+
+        descJob: {
+            validators: {
+                notEmpty: {
+                    message: 'The Description of Job is required'
+                }
+            }
+        }
+    }
+}).on('success.form.bv', function(e) {
+  //e.preventDefault();
+  $('#loading').show();
 
 
       //FALTAN VALIDADORES
       //var optionProcess = $("#initNewJob #optionProcess").val();
       //var percentage = $("#initNewJob #percentage").val();
       //var significanceLevel = $("#initNewJob #significanceLevel").val();
-      //var nameJob = $("#initNewJob #nameJob").val();
-      //var descJob = $("#initNewJob #descJob").val();
+      var nameJob = $("#initNewJob #nameJob").val();
+      var descJob = $("#initNewJob #descJob").val();
 
       $.ajax({
         method: "POST",
@@ -16,8 +55,8 @@ $(document).ready(function() {
           //"optionProcess"   : optionProcess,
           //"percentage"   : percentage,
           //"significanceLevel"   : significanceLevel,
-          //"nameJob"   : nameJob,
-          //"descJob"   : descJob
+          "nameJob"   : nameJob,
+          "descJob"   : descJob
         }
       }).done( function( info ){
         var response = JSON.parse(info);
@@ -35,3 +74,4 @@ $(document).ready(function() {
         }
       });
     });
+  });

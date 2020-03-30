@@ -128,35 +128,101 @@
               <div class="col-md-12 col-sm-12  ">
                 <div class="x_panel">
                   
-                  <div class="x_content">
-                    <h3>Upload the csv file</h3>
-                    <form id="frmAgregarFile" name="file" action="../php/uploadFile.php" class="dropzone" style="cursor: pointer;">
-                    </form>
-                  </div>
-                  <div class="x_content">  
-                    <h3>Upload the PDB file or enter the PDB code</h3>
-                    <form id="frmAgregarFile" name="file" action="../php/uploadFile.php" class="dropzone" style="cursor: pointer;">
-                      <div class="item form-group">
-                        <label for="pdbcode" class="col-form-label col-md-3 col-sm-3 label-align">PDB Code</label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="pdbcode" class="form-control" type="text" name="pdbcode">
-                        </div>
+                  <form id="frmAgregarFile" action="../php/uploadCsv.php" class="dropzone" style="cursor:pointer;">
+                    <h3>Upload de csv file</h3>
+                    <div class="dz-default dz-message">
+                      <div class="dz-icon">
+                        <i class="demo-pli-upload-to-cloud icon-5x"></i>
                       </div>
-                    </form>
-                                 
-                    <br>
-                    <div class="item form-group">
-                      <div class="col-md-6 offset-md-5">
-                        <form id="initNewJob" method="post">
-                          <button type="submit" id="processJob" class="form-horizontal btn btn-success">Create Job</button>
-                        </form>                        
+                      <div>
+                        <span class="dz-text">Drop files to upload</span>
+                        <p class="text-sm text-muted">or click to pick manually</p>
                       </div>
                     </div>
-                  </div>
+                  </form>
+
+
+
+
+                  <form id="frmAgregarFile" action="../php/uploadPdb.php" class="dropzone" style="cursor:pointer;">
+                    <h3>Upload de pdb file</h3>
+                    <div class="dz-default dz-message">
+                      <div class="dz-icon">
+                        <i class="demo-pli-upload-to-cloud icon-5x"></i>
+                      </div>
+                      <div>
+                        <span class="dz-text">Drop files to upload</span>
+                        <p class="text-sm text-muted">or click to pick manually</p>
+                      </div>
+                    </div>
+                  </form>
+
+
 
                 </div>
+
               </div>
             </div>
+            <form id="initNewJob" method="post" class="form-horizontal form-label-left">
+
+              <div class="form-group">
+                 <label class="col-sm-3 control-label">Name of job*</label>
+                  <div class="col-sm-5">
+                      <input type="text" class="form-control" id="nameJob" name="nameJob" />
+                  </div>
+              </div>
+
+              <div class="form-group">
+                 <label class="col-sm-3 control-label">Description of job*</label>
+                  <div class="col-sm-5">
+                      <input type="text" class="form-control" id="descJob" name="descJob" />
+                  </div>
+              </div>
+
+              <div class="ln_solid"></div>
+
+              <div class="form-group">
+                  <div class="col-sm-5 col-sm-offset-3">
+                    <button type="submit" id="processJob" class="btn btn-primary">Create Job</button>
+                  </div>
+              </div>
+            </form>
+
+
+
+
+
+
+
+            <div class="col-sm-12 col-md-12 col-lg-12" id="loading" style="display:none;">
+              <div class="panel">
+                  <div class="panel-body">
+                      <div class="sk-three-bounce">
+                          <div class="sk-child sk-bounce1"></div>
+                          <div class="sk-child sk-bounce2"></div>
+                          <div class="sk-child sk-bounce3"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-12" id="errorResponse" style="display:none;">
+            <div class="alert alert-danger" role="alert">
+              <p class="messageError"></p>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-12" id="okResponse" style="display:none;">
+            <div class="alert alert-success" role="alert">
+              <p class="messageOK"></p>
+            </div>
+          </div>
+
+
+
+
+
+
           </div>
         </div>
             </div>

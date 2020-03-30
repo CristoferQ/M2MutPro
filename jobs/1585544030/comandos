@@ -1,0 +1,10 @@
+python sdm.py -m /home/cquiroz/Escritorio/tesis/2OCJ_mut_list.txt -p /home/cquiroz/Escritorio/tesis/2ocj.pdb -r /home/cquiroz/Escritorio/ 
+
+
+python read_pdb.py -p /home/cquiroz/Escritorio/tesis/2ocj.pdb
+
+
+sudo chmod 777 -R /var/www/html/M2MutPro/
+
+
+
