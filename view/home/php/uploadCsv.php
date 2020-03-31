@@ -5,7 +5,7 @@
 	$idUSer = "1";
 	#$idUSer = $_SESSION['userName'];
 	$archivo = $_FILES['file'];
-	
+		
 
 	$templocation = $archivo["tmp_name"];
 	$name = $archivo["name"];

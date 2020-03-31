@@ -6,8 +6,8 @@
   //$optionProcess = $_REQUEST['optionProcess'];
   //$percentage = $_REQUEST['percentage'];
   //$significanceLevel = $_REQUEST['significanceLevel'];
-  //$nameJob = $_REQUEST['nameJob'];
-  //$descJob = $_REQUEST['descJob'];
+  $nameJob = $_REQUEST['nameJob'];
+  $descJob = $_REQUEST['descJob'];
 
   #creamos un directorio para almacenar los resultados
   $idJob = time();#sera el id del job...
@@ -58,7 +58,7 @@
   $pathResults = $pathMove."results/";
 
   #hacemos la ejecucion del script para el algoritmo
-  #$command = "python /var/www/html/M2MutPro/modelAlgorithm/bin/LauncherClustering.py $nameDocFull $optionProcess $pathResults $percentage $significanceLevel";
+  $command = "python /var/www/html/M2MutPro/modelAlgorithm/bin/LauncherClustering.py $nameDocFull $optionProcess $pathResults $percentage $significanceLevel";
   $output = [];
   exec($command, $output);
 
