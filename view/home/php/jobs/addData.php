@@ -33,7 +33,7 @@
   $pathMove = "/var/www/html/M2MutPro/jobs/$idJob/";
 
   $command = "mv $pathActual $pathMove";
-  $nameDocFull ="/var/www/html/M2MutPro/jobs/$idJob/$nameDocument";
+  $nameDocFull1 ="/var/www/html/M2MutPro/jobs/$idJob/$nameDocument";
   exec($command);
 
   //para el otro
@@ -44,7 +44,7 @@
   $pathActual = "/var/www/html/M2MutPro/jobs/tmp/$nameDocument";
 
   $command = "mv $pathActual $pathMove";
-  $nameDocFull ="/var/www/html/M2MutPro/jobs/$idJob/$nameDocument";
+  $nameDocFull2 ="/var/www/html/M2MutPro/jobs/$idJob/$nameDocument";
   exec($command);
 
 
@@ -58,7 +58,7 @@
   $pathResults = $pathMove."results/";
 
   #hacemos la ejecucion del script para el algoritmo
-  $command = "python /var/www/html/M2MutPro/modelAlgorithm/bin/LauncherClustering.py $nameDocFull $optionProcess $pathResults $percentage $significanceLevel";
+  $command = "python /var/www/html/M2MutPro/model/bin/launcher.py $nameJob $descJob $nameDocFull1 $nameDocFull2 $pathResults";
   $output = [];
   exec($command, $output);
 
