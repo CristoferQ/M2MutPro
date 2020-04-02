@@ -1,34 +1,29 @@
-import pandas as pd
 import sys
-#import graphviz as gp
-#import pylab
-
-
-
 #import os
 #import json
 
-from modules.utils import checkCsv
-from modules.utils import checkPdb
+from modules.utils import checks
 
 class Launcher(object):
-    #def __init__(self):
     
+    #def __init__(self):
+        
     nameJob = sys.argv[1]
     descJob = sys.argv[2]
-    pathResponse = sys.argv[5]
-    
-    csv = pd.read_csv(sys.argv[3])
-    pdb = sys.argv[4]
-    
+    csv = sys.argv[3]
+    pdb_code = sys.argv[4]
+    pdb = sys.argv[5]
+    pathResponse = sys.argv[6]
     
     #print(nameJob)
     #print(descJob)
-    #print(csv)
-    #print(pdb)
+    print(csv)
+    print(pdb_code)
+    print(pdb)
     #print(pathResponse)
-    checkCsv = checkCsv.checkCsv(csv)
-    checkCsv.evaluateNullData()
+
+    checking = checks.checks(csv,pdb_code,pdb)
+    checking.evaluateCsv()
     
     
     

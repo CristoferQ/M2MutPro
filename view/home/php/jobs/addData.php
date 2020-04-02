@@ -48,17 +48,14 @@
   exec($command);
 
 
-
-
-
-
+#Manejo de errores = no funcionan archivos que tengan un espacio
 
   $command = "mkdir ".$pathMove."results/";
   exec($command);
   $pathResults = $pathMove."results/";
 
   #hacemos la ejecucion del script para el algoritmo
-  $command = "python /var/www/html/M2MutPro/model/bin/launcher.py $nameJob $descJob $nameDocFull1 $nameDocFull2 $pathResults";
+  #$command = "python /var/www/html/M2MutPro/model/bin/launcher.py $nameJob $descJob $nameDocFull1 $nameDocFull2 $pathResults";
   $output = [];
   exec($command, $output);
 
