@@ -24,6 +24,8 @@ class Launcher(object):
 
     checking = checks.checks(csv,pdb_code,pdb)
     checking.evaluateCsv()
+    checking.evaluateNullData()
+    checking.evaluatePdbDownload()
     
     
     
