@@ -1,5 +1,8 @@
 import pandas as pd
 import urllib
+import os
+from Bio.PDB.PDBParser import PDBParser
+
 class checks(object):
 
     def __init__(self, csv, pdb_code, pdb):
@@ -22,12 +25,26 @@ class checks(object):
         print("Datos nulos",len1-len2)
     def evaluatePdbDownload(self):
         pdb_code = self.pdb_code
-        print(pdb_code)
         ruta = "http://files.rcsb.org/download/"+pdb_code+".pdb"
         archivo = pdb_code+".pdb"
         try:
-            download = urllib.request.urlretrieve('http://files.rcsb.org/download/101M.pdb', '101m.pdb')
+            download = urllib.request.urlretrieve(ruta, "/home/ceql/Escritorio/"+archivo)
             print("ok")
         except:
-            print(error)
-    
+            print("error")
+    def evaluatePdb(self):
+        pdb = self.pdb
+        residuesValids = ['ALA', 'LYS', 'ARG', 'HIS', 'PHE', 'THR', 'PRO', 'MET', 'GLY', 'ASN', 'ASP', 'GLN', 'GLU', 'SER', 'TYR', 'TRP', 'VAL', 'ILE', 'LEU', 'CYS']
+        ListResidues = []
+        pdb_name = os.path.split(pdb)
+        #print(pdb_name[1])
+        parser = PDBParser()#creamos un parse de pdb
+        self.structure = parser.get_structure(pdb_name[1], pdb)#trabajamos con la proteina cuyo archivo es 1AQ2.pdb
+        self.residuesFull = self.structure.get_residues()
+        for model in self.structure:
+            for chain in model:
+                for residue in chain:
+                    if residue.resname in residuesValids:
+                        ListResidues.append(residue)
+        print(ListResidues)
+    def evaluateChains(self):
