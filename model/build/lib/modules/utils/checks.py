@@ -39,11 +39,30 @@ class checks(object):
         pdb_name = os.path.split(pdb)
         #print(pdb_name[1])
         parser = PDBParser()#creamos un parse de pdb
-        self.structure = parser.get_structure(pdb_name[1], pdb)#trabajamos con la proteina cuyo archivo es 1AQ2.pdb
-        self.residuesFull = self.structure.get_residues()
-        for model in self.structure:
+        structure = parser.get_structure(pdb_name[1], pdb)#trabajamos con la proteina cuyo archivo es 1AQ2.pdb
+        residuesFull = structure.get_residues()
+        for model in structure:
             for chain in model:
                 for residue in chain:
                     if residue.resname in residuesValids:
                         ListResidues.append(residue)
-        print(ListResidues)
+        #print(ListResidues)
+    def evaluateChains(self):
+        csv = pd.read_csv(self.csv)
+
+        pdb = self.pdb
+        residuesValids = ['ALA', 'LYS', 'ARG', 'HIS', 'PHE', 'THR', 'PRO', 'MET', 'GLY', 'ASN', 'ASP', 'GLN', 'GLU', 'SER', 'TYR', 'TRP', 'VAL', 'ILE', 'LEU', 'CYS']
+        ListResidues = []
+        pdb_name = os.path.split(pdb)
+
+
+        cadenas_csv = list(set(csv['cadena']))
+        print(cadenas_csv)
+        cadenas_pdb = []
+        parser = PDBParser()#creamos un parse de pdb
+        structure = parser.get_structure(pdb_name[1], pdb)#trabajamos con la proteina cuyo archivo es 1AQ2.pdb
+        residuesFull = structure.get_residues()
+
+        for chain in structure.get_chains():
+            cadenas_pdb.append(str(chain))
+        print(cadenas_pdb)

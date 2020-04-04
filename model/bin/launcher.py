@@ -27,6 +27,7 @@ class Launcher(object):
     checking.evaluateNullData()
     #checking.evaluatePdbDownload()
     checking.evaluatePdb()
+    checking.evaluateChains()
     
     
     
