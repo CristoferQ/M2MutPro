@@ -49,18 +49,13 @@ class checks(object):
         #print(ListResidues)
     def evaluateChains(self):
         csv = pd.read_csv(self.csv)
-
+        csv = csv.dropna(how='any',axis=0)
         pdb = self.pdb
+        cadenas_csv = []
         cadenas_csv = list(set(csv['cadena']))
-        print(cadenas_csv)
-
-
         
-        residuesValids = ['ALA', 'LYS', 'ARG', 'HIS', 'PHE', 'THR', 'PRO', 'MET', 'GLY', 'ASN', 'ASP', 'GLN', 'GLU', 'SER', 'TYR', 'TRP', 'VAL', 'ILE', 'LEU', 'CYS']
-        ListResidues = []
+        
         pdb_name = os.path.split(pdb)
-
-
         
         cadenas_pdb = []
         parser = PDBParser()#creamos un parse de pdb
@@ -68,5 +63,15 @@ class checks(object):
         residuesFull = structure.get_residues()
 
         for chain in structure.get_chains():
-            cadenas_pdb.append(str(chain))
-        print(cadenas_pdb)
+            cadenas_pdb.append(str(chain)[10:11])
+
+        cadenas_encontradas = 0
+        for i in cadenas_csv:
+            print(i)
+            if (i in cadenas_pdb):
+                
+                cadenas_encontradas+=1
+        if (cadenas_encontradas == len(cadenas_csv)):
+            print("ok")
+        else:
+            print("error")
