@@ -28,6 +28,7 @@ class Launcher(object):
     #checking.evaluatePdbDownload()
     checking.evaluatePdb()
     checking.evaluateChains()
+    checking.evaluateResidues()
     
     
     

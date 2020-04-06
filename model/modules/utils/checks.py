@@ -12,7 +12,7 @@ class checks(object):
     def evaluateCsv(self):
         try:
             csv = pd.read_csv(self.csv)
-            if(len(csv["sepal.length"])!=0 and len(csv["sepal.width"])!=0):
+            if(len(csv["chain"])!=0 and len(csv["wt"])!=0):
                 print("ok")
         except:
             print("error")        
@@ -39,7 +39,7 @@ class checks(object):
         pdb_name = os.path.split(pdb)
         #print(pdb_name[1])
         parser = PDBParser()#creamos un parse de pdb
-        structure = parser.get_structure(pdb_name[1], pdb)#trabajamos con la proteina cuyo archivo es 1AQ2.pdb
+        structure = parser.get_structure(pdb_name[1], pdb)
         residuesFull = structure.get_residues()
         for model in structure:
             for chain in model:
@@ -52,7 +52,7 @@ class checks(object):
         csv = csv.dropna(how='any',axis=0)
         pdb = self.pdb
         cadenas_csv = []
-        cadenas_csv = list(set(csv['cadena']))
+        cadenas_csv = list(set(csv['chain']))
         
         
         pdb_name = os.path.split(pdb)
@@ -63,15 +63,33 @@ class checks(object):
         residuesFull = structure.get_residues()
 
         for chain in structure.get_chains():
-            cadenas_pdb.append(str(chain)[10:11])
+            cadenas_pdb.append(chain.get_id())
 
         cadenas_encontradas = 0
         for i in cadenas_csv:
-            print(i)
-            if (i in cadenas_pdb):
-                
+            if (i in cadenas_pdb):         
                 cadenas_encontradas+=1
         if (cadenas_encontradas == len(cadenas_csv)):
-            print("ok")
+            print("ok evaluate chain")
         else:
             print("error")
+    def evaluateResidues(self):
+        csv = pd.read_csv(self.csv)
+        csv = csv.dropna(how='any',axis=0)
+        pdb = self.pdb
+        cadenas_csv = list(set(csv['chain']))
+        residuos_csv = list(set(csv['wt']))
+        pos_csv = list(set(csv['pos']))
+        print(cadenas_csv)
+        print(residuos_csv)
+        print(pos_csv)
+        pdb_name = os.path.split(pdb)
+        
+        cadenas_pdb = []
+        parser = PDBParser()#creamos un parse de pdb
+        structure = parser.get_structure(pdb_name[1], pdb)#trabajamos con la proteina cuyo archivo es 1AQ2.pdb
+        residuesFull = structure.get_residues()
+        for model in structure:
+            for chain in model:
+                print(chain.get_id())
+                #for residue in chain:   
