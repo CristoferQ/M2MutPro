@@ -85,11 +85,29 @@ class checks(object):
         print(pos_csv)
         pdb_name = os.path.split(pdb)
         
-        cadenas_pdb = []
+        
+        
         parser = PDBParser()#creamos un parse de pdb
         structure = parser.get_structure(pdb_name[1], pdb)#trabajamos con la proteina cuyo archivo es 1AQ2.pdb
-        residuesFull = structure.get_residues()
-        for model in structure:
-            for chain in model:
-                print(chain.get_id())
-                #for residue in chain:   
+        model = structure[0]
+        #for model in structure:
+        #    print("a")
+        for chain in model:
+            for chain_csv in cadenas_csv:
+                if (chain_csv == chain.get_id()):
+                    print("cadena igual")
+                    for residue in chain:
+                        #print(residue)
+                        #print(residue.get_resname())
+                        for residue_csv in residuos_csv:
+                            #print(residue.get_id()[1])
+                            if(residue_csv == residue.get_resname()):
+                                #print("residuo igual")
+                                for pos in pos_csv:
+                                    if(pos == residue.get_id()[1]):
+                                        print("pos igual")
+
+                #for residue in chain:
+                    #    if (residue.get_resname() == residuos_csv):
+                    #        print("residuo igual")      
+
