@@ -80,9 +80,9 @@ class checks(object):
         cadenas_csv = list(set(csv['chain']))
         residuos_csv = list(set(csv['wt']))
         pos_csv = list(set(csv['pos']))
-        print(cadenas_csv)
-        print(residuos_csv)
-        print(pos_csv)
+        #print(cadenas_csv)
+        #print(residuos_csv)
+        #print(pos_csv)
         pdb_name = os.path.split(pdb)
         
         
@@ -90,24 +90,25 @@ class checks(object):
         parser = PDBParser()#creamos un parse de pdb
         structure = parser.get_structure(pdb_name[1], pdb)#trabajamos con la proteina cuyo archivo es 1AQ2.pdb
         model = structure[0]
-        #for model in structure:
-        #    print("a")
+    
+        lista_de_errores = pd.DataFrame(columns=["cadena","pos","residuo_csv","residuo_pdb"])
+
         for chain in model:
             for chain_csv in cadenas_csv:
-                if (chain_csv == chain.get_id()):
-                    print("cadena igual")
-                    for residue in chain:
-                        #print(residue)
-                        #print(residue.get_resname())
-                        for residue_csv in residuos_csv:
-                            #print(residue.get_id()[1])
-                            if(residue_csv == residue.get_resname()):
-                                #print("residuo igual")
-                                for pos in pos_csv:
-                                    if(pos == residue.get_id()[1]):
-                                        print("pos igual")
+                for residue in chain:
+                    for residue_csv in residuos_csv:
+                        for pos in pos_csv:
+                            if (chain_csv == chain.get_id() and pos == residue.get_id()[1]):
+                                if (residue_csv == residue.get_resname()):
+                                    print("ok")
+                                else:
+                                    lista_de_errores = lista_de_errores.append({"cadena":chain.get_id(), "pos":residue.get_id()[1], "residuo_csv":residue_csv, "residuo_pdb":residue.get_resname()}, ignore_index=True)
+                                    #lista_de_errores = lista_de_errores.append([{"pos":residue.get_id()[1]}])
+                                    #,,[{"residuo_csv":residue_csv}],[{"residuo_pdb":residue.get_resname()}])
+                                    #,residue.get_id()[1],residue_csv,residue.get_resname())
+        
+        print(lista_de_errores)
+                
+                                
 
-                #for residue in chain:
-                    #    if (residue.get_resname() == residuos_csv):
-                    #        print("residuo igual")      
-
+        
