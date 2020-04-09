@@ -39,7 +39,7 @@ $(document).ready(function() {
 }).on('success.form.bv', function(e) {
   //e.preventDefault();
   $('#loading').show();
-
+  
 
       //FALTAN VALIDADORES
       //var optionProcess = $("#initNewJob #optionProcess").val();

@@ -24,11 +24,11 @@ class Launcher(object):
 
     checking = checks.checks(csv,pdb_code,pdb)
     checking.evaluateCsv()
-    checking.evaluateNullData()
+    #checking.evaluateNullData()
     #checking.evaluatePdbDownload()
     checking.evaluatePdb()
-    checking.evaluateChains()
-    checking.evaluateResidues()
+    #checking.evaluateChains()
+    #checking.evaluateResidues()
     
     
     

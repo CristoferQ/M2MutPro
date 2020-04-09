@@ -37,15 +37,15 @@
   exec($command);
 
   //para el otro
-  $pathData = "/var/www/html/M2MutPro/jobs/tmp/1_documentQueue2.txt";
-  $nameDocument = readDocument($pathData);
-  $response ['nameFile'] = $nameDocument;
+  $pathData2 = "/var/www/html/M2MutPro/jobs/tmp/1_documentQueue2.txt";
+  $nameDocument2 = readDocument($pathData2);
+  $response2 ['nameFile'] = $nameDocument2;
 
   $pathActual = "/var/www/html/M2MutPro/jobs/tmp/$nameDocument";
 
-  $command = "mv $pathActual $pathMove";
+  $command2 = "mv $pathActual $pathMove2";
   $nameDocFull2 ="/var/www/html/M2MutPro/jobs/$idJob/$nameDocument";
-  exec($command);
+  exec($command2);
 
 
 #Manejo de errores = no funcionan archivos que tengan un espacio
@@ -55,7 +55,7 @@
   $pathResults = $pathMove."results/";
 
   #hacemos la ejecucion del script para el algoritmo
-  #$command = "python /var/www/html/M2MutPro/model/bin/launcher.py $nameJob $descJob $nameDocFull1 $nameDocFull2 $pathResults";
+  $command = "python /var/www/html/M2MutPro/model/bin/launcher.py $nameJob $descJob $nameDocFull1 $nameDocFull2 $pathResults";
   $output = [];
   exec($command, $output);
 
