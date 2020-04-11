@@ -1,4 +1,31 @@
 $(document).ready(function() {
+ 
+  Dropzone.options.frmAgregarCsv = {
+    paramName: "file1", // The name that will be used to transfer the file
+    maxFilesize: 5, // MB
+    url:"../php/uploadCsv.php",
+
+        success: function (file1, response) {
+            file.previewElement.classList.add("dz-success");
+            console.log("Successfully uploaded :");
+        },
+        error: function (file1, response) {
+            file.previewElement.classList.add("dz-error");
+        }
+  };
+  Dropzone.options.frmAgregarPdb = {
+    paramName: "file2", // The name that will be used to transfer the file
+    maxFilesize: 5, // MB
+    url:"../php/uploadPdb.php",
+        success: function (file2, response) {
+            file.previewElement.classList.add("dz-success");
+            console.log("Successfully uploaded :");
+        },
+        error: function (file2, response) {
+            file.previewElement.classList.add("dz-error");
+        }
+  };
+
 
   $('#initNewJob').bootstrapValidator({
     feedbackIcons: {
@@ -7,19 +34,6 @@ $(document).ready(function() {
         validating: 'glyphicon glyphicon-refresh'
     },
     fields: {
-
-        percentage: {
-            validators: {
-                notEmpty: {
-                    message: 'The percentage is required'
-                },
-                regexp: {
-                    regexp: /^[0-9.]+$/,
-                    message: 'The percentage must be numeric values'
-                }
-            }
-        },
-
         nameJob: {
             validators: {
                 notEmpty: {

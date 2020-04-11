@@ -80,9 +80,6 @@ class checks(object):
         cadenas_csv = list(set(csv['chain']))
         residuos_csv = list(set(csv['wt']))
         pos_csv = list(set(csv['pos']))
-        #print(cadenas_csv)
-        #print(residuos_csv)
-        #print(pos_csv)
         pdb_name = os.path.split(pdb)
         
         

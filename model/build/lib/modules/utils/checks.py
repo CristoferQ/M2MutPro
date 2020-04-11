@@ -80,9 +80,6 @@ class checks(object):
         cadenas_csv = list(set(csv['chain']))
         residuos_csv = list(set(csv['wt']))
         pos_csv = list(set(csv['pos']))
-        #print(cadenas_csv)
-        #print(residuos_csv)
-        #print(pos_csv)
         pdb_name = os.path.split(pdb)
         
         
@@ -103,10 +100,6 @@ class checks(object):
                                     print("ok")
                                 else:
                                     lista_de_errores = lista_de_errores.append({"cadena":chain.get_id(), "pos":residue.get_id()[1], "residuo_csv":residue_csv, "residuo_pdb":residue.get_resname()}, ignore_index=True)
-                                    #lista_de_errores = lista_de_errores.append([{"pos":residue.get_id()[1]}])
-                                    #,,[{"residuo_csv":residue_csv}],[{"residuo_pdb":residue.get_resname()}])
-                                    #,residue.get_id()[1],residue_csv,residue.get_resname())
-        
         print(lista_de_errores)
                 
                                 

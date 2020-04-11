@@ -1,6 +1,7 @@
 import sys
 #import os
 #import json
+import json
 
 from modules.utils import checks
 
@@ -30,5 +31,7 @@ class Launcher(object):
     #checking.evaluateChains()
     #checking.evaluateResidues()
     
-    
-    
+    results = ["hola"]
+    print(results)
+    with open(pathResponse+"test.json", "w") as fp:
+        json.dump(results, fp)

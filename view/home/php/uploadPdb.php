@@ -1,10 +1,9 @@
 <?php
-
 	#session_start();
 	#$idUSer = $_SESSION['idUser'];
 	$idUSer = "1";
 	#$idUSer = $_SESSION['userName'];
-	$archivo = $_FILES['file'];
+	$archivo = $_FILES['file2'];
 	
 
 	$templocation = $archivo["tmp_name"];
