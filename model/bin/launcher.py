@@ -13,8 +13,8 @@ class Launcher(object):
     descJob = sys.argv[2]
     csv = sys.argv[3]
     pdb_code = sys.argv[4]
-    pdb = sys.argv[5]
-    pathResponse = sys.argv[6]
+    #pdb = sys.argv[5]
+    pathResponse = sys.argv[5]
     
     #print(nameJob)
     #print(descJob)
@@ -31,7 +31,7 @@ class Launcher(object):
     #checking.evaluateChains()
     #checking.evaluateResidues()
     
-    results = ["hola"]
-    print(results)
-    with open(pathResponse+"test.json", "w") as fp:
-        json.dump(results, fp)
+    #results = ["hola"]
+   # print(results)
+    #with open(pathResponse+"test.json", "w") as fp:
+     #   json.dump(results, fp)

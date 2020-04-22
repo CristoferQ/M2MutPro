@@ -5,61 +5,75 @@ from Bio.PDB.PDBParser import PDBParser
 
 class checks(object):
 
-    def __init__(self, csv, pdb_code, pdb):
-        self.csv = csv
+    def __init__(self, csv, pdb_code, path_download):
+        self.dataset = pd.read_csv (csv)
         self.pdb_code = pdb_code
-        self.pdb = pdb
+        self.response = 0
+        self.path_download = path_download
+        self.response_download_pdb = 0
+        self.response_read_pdb = 0
+        self.response_chains = 0
     def evaluateCsv(self):
         try:
-            csv = pd.read_csv(self.csv)
-            if(len(csv["chain"])!=0 and len(csv["wt"])!=0):
-                print("ok")
+            for key in self.dataset.keys():
+                if(len(self.dataset[key])==0):
+                    self.response = 1
+                    break
         except:
-            print("error")        
+            self.response = 1        
     #to remove null values in dataset
     def evaluateNullData(self):
-        csv = pd.read_csv(self.csv)
-        len1 = len(csv)
-        csv2 = csv.dropna(how='any',axis=0)
-        len2 = len(csv2)
-        print("Datos nulos",len1-len2)
+        len1 = len(self.dataset)
+        self.dataset = self.dataset.dropna(how='any',axis=0)
+        len2 = len(self.dataset)
+        self.dif = len1-len2
+
     def evaluatePdbDownload(self):
-        pdb_code = self.pdb_code
-        ruta = "http://files.rcsb.org/download/"+pdb_code+".pdb"
-        archivo = pdb_code+".pdb"
+        ruta = "http://files.rcsb.org/download/"+self.pdb_code+".pdb"
+        archivo = self.pdb_code+".pdb"
         try:
-            download = urllib.request.urlretrieve(ruta, "/home/ceql/Escritorio/"+archivo)
-            print("ok")
+            download = urllib.request.urlretrieve(ruta,self.path_download+archivo)
+            self.response_download_pdb = 0 #correcto
         except:
-            print("error")
+            self.response_download_pdb = 1 
+
     def evaluatePdb(self):
-        pdb = self.pdb
         residuesValids = ['ALA', 'LYS', 'ARG', 'HIS', 'PHE', 'THR', 'PRO', 'MET', 'GLY', 'ASN', 'ASP', 'GLN', 'GLU', 'SER', 'TYR', 'TRP', 'VAL', 'ILE', 'LEU', 'CYS']
         ListResidues = []
-        pdb_name = os.path.split(pdb)
+        #pdb_name = os.path.split(self.pdb)
         #print(pdb_name[1])
-        parser = PDBParser()#creamos un parse de pdb
-        structure = parser.get_structure(pdb_name[1], pdb)
-        residuesFull = structure.get_residues()
-        for model in structure:
-            for chain in model:
-                for residue in chain:
-                    if residue.resname in residuesValids:
-                        ListResidues.append(residue)
-        #print(ListResidues)
+        try:
+            parser = PDBParser()#creamos un parse de pdb
+            structure = parser.get_structure(self.pdb_code, self.path_download+self.pdb_code+".pdb")
+            residuesFull = structure.get_residues()
+            for model in structure:
+                for chain in model:
+                    for residue in chain:
+                        if residue.resname in residuesValids:
+                            ListResidues.append(residue)
+            if len(ListResidues)>0:
+                self.response_read_pdb = 0 #correcto
+            else:
+                self.response_download_pdb = 1
+        except:
+            self.response_download_pdb = 1
+            #print(ListResidues)
+
     def evaluateChains(self):
-        csv = pd.read_csv(self.csv)
-        csv = csv.dropna(how='any',axis=0)
-        pdb = self.pdb
-        cadenas_csv = []
-        cadenas_csv = list(set(csv['chain']))
+        #csv = pd.read_csv(self.csv)
+        #csv = csv.dropna(how='any',axis=0)
+
+        #pdb = self.pdb
+
+        
+        cadenas_csv = list(set(self.dataset['chain']))
         
         
-        pdb_name = os.path.split(pdb)
+        #pdb_name = os.path.split(pdb)
         
         cadenas_pdb = []
         parser = PDBParser()#creamos un parse de pdb
-        structure = parser.get_structure(pdb_name[1], pdb)#trabajamos con la proteina cuyo archivo es 1AQ2.pdb
+        structure = parser.get_structure(self.pdb_code, self.path_download+self.pdb_code+".pdb")
         residuesFull = structure.get_residues()
 
         for chain in structure.get_chains():
@@ -70,25 +84,25 @@ class checks(object):
             if (i in cadenas_pdb):         
                 cadenas_encontradas+=1
         if (cadenas_encontradas == len(cadenas_csv)):
-            print("ok evaluate chain")
+            self.response_chains = 0 #correcto
         else:
-            print("error")
+            self.response_chains = 1
     def evaluateResidues(self):
-        csv = pd.read_csv(self.csv)
-        csv = csv.dropna(how='any',axis=0)
-        pdb = self.pdb
-        cadenas_csv = list(set(csv['chain']))
-        residuos_csv = list(set(csv['wt']))
-        pos_csv = list(set(csv['pos']))
-        pdb_name = os.path.split(pdb)
+        #csv = pd.read_csv(self.csv)
+        #csv = csv.dropna(how='any',axis=0)
+        #pdb = self.pdb
+        cadenas_csv = list(set(self.dataset['chain']))
+        residuos_csv = list(set(self.dataset['wt']))
+        pos_csv = list(set(self.dataset['pos']))
+        #pdb_name = os.path.split(pdb)
         
         
         
         parser = PDBParser()#creamos un parse de pdb
-        structure = parser.get_structure(pdb_name[1], pdb)#trabajamos con la proteina cuyo archivo es 1AQ2.pdb
+        structure = parser.get_structure(self.pdb_code, self.path_download+self.pdb_code+".pdb")
         model = structure[0]
     
-        lista_de_errores = pd.DataFrame(columns=["cadena","pos","residuo_csv","residuo_pdb"])
+        self.lista_de_errores = pd.DataFrame(columns=["cadena","pos","residuo_csv","residuo_pdb"])
 
         for chain in model:
             for chain_csv in cadenas_csv:
@@ -99,8 +113,8 @@ class checks(object):
                                 if (residue_csv == residue.get_resname()):
                                     print("ok")
                                 else:
-                                    lista_de_errores = lista_de_errores.append({"cadena":chain.get_id(), "pos":residue.get_id()[1], "residuo_csv":residue_csv, "residuo_pdb":residue.get_resname()}, ignore_index=True)
-        print(lista_de_errores)
+                                    self.lista_de_errores.append({"cadena":chain.get_id(), "pos":residue.get_id()[1], "residuo_csv":residue_csv, "residuo_pdb":residue.get_resname()}, ignore_index=True)
+        self.lista_de_errores.to_csv(self.path_download+"errors.csv",index = False)
                 
                                 
 
