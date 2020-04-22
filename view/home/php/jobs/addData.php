@@ -18,8 +18,15 @@
   $pathData = "/var/www/html/M2MutPro/jobs/tmp/1_documentQueue1.txt";
   $nameDocument = readDocument($pathData);
   $response ['nameFile'] = $nameDocument;
+  $pathActual = "/var/www/html/M2MutPro/jobs/tmp/$nameDocument";
 
-  #movemos el archivo... creamos directorio
+  $pathData2 = "/var/www/html/M2MutPro/jobs/tmp/1_documentQueue2.txt";
+  $nameDocument2 = readDocument($pathData2);
+  $pathActual2 = "/var/www/html/M2MutPro/jobs/tmp/$nameDocument2";
+  $response2 ['nameFile'] = $nameDocument2;
+
+  if(file_exists($pathActual)){
+    #movemos el archivo... creamos directorio
   $path = "/var/www/html/M2MutPro/jobs/$idJob";
 
   if (!file_exists($path)) {
@@ -28,24 +35,23 @@
 
   #movemos el archivo...
   //movemos el archivo al path de la licitacion...
-  $pathActual = "/var/www/html/M2MutPro/jobs/tmp/$nameDocument";
+  
 
   $pathMove = "/var/www/html/M2MutPro/jobs/$idJob/";
 
+  
   $command = "mv $pathActual $pathMove";
   $nameDocFull1 ="/var/www/html/M2MutPro/jobs/$idJob/$nameDocument";
   exec($command);
+  
 
   //para el otro
-  $pathData2 = "/var/www/html/M2MutPro/jobs/tmp/1_documentQueue2.txt";
-  $nameDocument2 = readDocument($pathData2);
-  $pathActual2 = "/var/www/html/M2MutPro/jobs/tmp/$nameDocument2";
-  $response2 ['nameFile'] = $nameDocument2;
+
+  $path_archivo2 = "/var/www/html/M2MutPro/jobs/tmp/$nameDocument2";
 
   $command2 = "mv $pathActual2 $pathMove";
   $nameDocFull2 ="/var/www/html/M2MutPro/jobs/$idJob/$nameDocument2";
   exec($command2);
-
 
 #Manejo de errores = no funcionan archivos que tengan un espacio
 
@@ -54,7 +60,7 @@
   $pathResults = $pathMove."results/";
 
   #hacemos la ejecucion del script para el algoritmo
-  #$command = "python /var/www/html/M2MutPro/model/bin/launcher.py $nameJob $descJob $nameDocFull1 $nameDocFull2 $pathResults";
+  $command = "python /var/www/html/M2MutPro/model/bin/launcher.py $nameJob $descJob $nameDocFull1 $nameDocFull2 $pathResults";
   $output = [];
   exec($command, $output);
 
@@ -62,4 +68,10 @@
 
   echo json_encode($response);
 
+  }else{
+  $response['file'] = "ERROR";
+
+  echo json_encode($response);
+  }
+  
 ?>

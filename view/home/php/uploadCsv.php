@@ -27,5 +27,5 @@
 	$file = fopen($pathData, "w");
 	fwrite($file, "$name");
 	fclose($file);
-
+	
  ?>

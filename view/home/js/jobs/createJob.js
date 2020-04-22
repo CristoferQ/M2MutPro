@@ -1,10 +1,12 @@
 $(document).ready(function() {
- 
+  var submit = document.getElementById('processJob');
+  submit.disabled = true;
+
+
   Dropzone.options.frmAgregarCsv = {
     paramName: "file1", // The name that will be used to transfer the file
     maxFilesize: 5, // MB
     url:"../php/uploadCsv.php",
-
         success: function (file1, response) {
             file.previewElement.classList.add("dz-success");
             console.log("Successfully uploaded :");
@@ -25,15 +27,22 @@ $(document).ready(function() {
             file.previewElement.classList.add("dz-error");
         }
   };
-
-
+  
   $('#initNewJob').bootstrapValidator({
+    
     feedbackIcons: {
         valid: 'glyphicon glyphicon-ok',
         invalid: 'glyphicon glyphicon-remove',
         validating: 'glyphicon glyphicon-refresh'
     },
     fields: {
+      exampleFormControlFile1: {
+        validators: {
+            notEmpty: {
+                message: 'The name of job is required'
+            }
+        }
+      },
         nameJob: {
             validators: {
                 notEmpty: {
@@ -50,18 +59,17 @@ $(document).ready(function() {
             }
         }
     }
-}).on('success.form.bv', function(e) {
-  //e.preventDefault();
+    
+})
+.on('success.form.bv', function(e) {
   $('#loading').show();
   
-
-      //FALTAN VALIDADORES
+  e.preventDefault();
       //var optionProcess = $("#initNewJob #optionProcess").val();
       //var percentage = $("#initNewJob #percentage").val();
       //var significanceLevel = $("#initNewJob #significanceLevel").val();
       var nameJob = $("#initNewJob #nameJob").val();
       var descJob = $("#initNewJob #descJob").val();
-
       $.ajax({
         method: "POST",
         url: "../php/jobs/addData.php",
@@ -72,20 +80,25 @@ $(document).ready(function() {
           "nameJob"   : nameJob,
           "descJob"   : descJob
         }
-      }).done( function( info ){
+      }).done(function(info){
         var response = JSON.parse(info);
-
-        if (response.exec== "ERROR"){
-          $('#loading').hide();
-          var message = "Error during the creation of the job, please check the data set. If the error persists, please contact the administrator.";
-          $(".messageError").html( message);
-
-          $('#errorResponse').show();
-          setTimeout("location.href=''", 5000);
-        }else{
-          var job = response.job;
-          //location.href="resultProcess/?job="+job+"&file="+response.nameFile;
+        if (response.file == "ERROR"){
+          alert("Se ha producido un error en la subida de archivos");
+          location.href="";
+        }
+        else{
+          if (response.exec == "ERROR"){
+            $('#loading').hide();
+            var message = "Error during the creation of the job, please check the data set. If the error persists, please contact the administrator.";
+            $(".messageError").html( message);
+  
+            $('#errorResponse').show();
+            setTimeout("location.href=''", 5000);
+          }else{
+            var job = response.job;
+            location.href="123";
+          }
         }
       });
     });
-  });
+});
