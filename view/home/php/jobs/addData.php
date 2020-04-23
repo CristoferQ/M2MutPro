@@ -20,11 +20,6 @@
   $response ['nameFile'] = $nameDocument;
   $pathActual = "/var/www/html/M2MutPro/jobs/tmp/$nameDocument";
 
-  $pathData2 = "/var/www/html/M2MutPro/jobs/tmp/1_documentQueue2.txt";
-  $nameDocument2 = readDocument($pathData2);
-  $pathActual2 = "/var/www/html/M2MutPro/jobs/tmp/$nameDocument2";
-  $response2 ['nameFile'] = $nameDocument2;
-
   if(file_exists($pathActual)){
     #movemos el archivo... creamos directorio
   $path = "/var/www/html/M2MutPro/jobs/$idJob";
@@ -45,14 +40,7 @@
   exec($command);
   
 
-  //para el otro
-
-  $path_archivo2 = "/var/www/html/M2MutPro/jobs/tmp/$nameDocument2";
-
-  $command2 = "mv $pathActual2 $pathMove";
-  $nameDocFull2 ="/var/www/html/M2MutPro/jobs/$idJob/$nameDocument2";
-  exec($command2);
-
+  
 #Manejo de errores = no funcionan archivos que tengan un espacio
 
   $command = "mkdir ".$pathMove."results/";

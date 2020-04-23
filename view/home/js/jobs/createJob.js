@@ -15,18 +15,6 @@ $(document).ready(function() {
             file.previewElement.classList.add("dz-error");
         }
   };
-  Dropzone.options.frmAgregarPdb = {
-    paramName: "file2", // The name that will be used to transfer the file
-    maxFilesize: 5, // MB
-    url:"../php/uploadPdb.php",
-        success: function (file2, response) {
-            file.previewElement.classList.add("dz-success");
-            console.log("Successfully uploaded :");
-        },
-        error: function (file2, response) {
-            file.previewElement.classList.add("dz-error");
-        }
-  };
   
   $('#initNewJob').bootstrapValidator({
     

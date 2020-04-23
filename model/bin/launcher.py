@@ -13,25 +13,17 @@ class Launcher(object):
     descJob = sys.argv[2]
     csv = sys.argv[3]
     pdb_code = sys.argv[4]
-    #pdb = sys.argv[5]
     pathResponse = sys.argv[5]
     
-    #print(nameJob)
-    #print(descJob)
-    print(csv)
-    print(pdb_code)
-    print(pdb)
-    #print(pathResponse)
 
-    checking = checks.checks(csv,pdb_code,pdb)
-    checking.evaluateCsv()
+
+    checking = checks.checks(csv,pdb_code,pathResponse)
+    #checking.evaluateCsv() 
     #checking.evaluateNullData()
-    #checking.evaluatePdbDownload()
+    #checking.evaluatePdbDownload() 
     checking.evaluatePdb()
-    #checking.evaluateChains()
-    #checking.evaluateResidues()
-    
-    #results = ["hola"]
-   # print(results)
+    checking.evaluateChains()
+    checking.evaluateResidues()
+
     #with open(pathResponse+"test.json", "w") as fp:
-     #   json.dump(results, fp)
+    #   json.dump(results, fp)
