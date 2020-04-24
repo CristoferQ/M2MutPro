@@ -24,6 +24,7 @@ class Launcher(object):
     checking.evaluatePdb()
     checking.evaluateChains()
     checking.evaluateResidues()
+    checking.cambiar()
 
     #with open(pathResponse+"test.json", "w") as fp:
     #   json.dump(results, fp)

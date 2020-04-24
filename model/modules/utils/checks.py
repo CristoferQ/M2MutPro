@@ -76,40 +76,32 @@ class checks(object):
         else:
             self.response_chains = 1
     def evaluateResidues(self):
-        #cadenas_csv = list(set(self.dataset['chain']))
-        #residuos_csv = list(set(self.dataset['wt']))
-        #pos_csv = list(set(self.dataset['pos']))
-        
         parser = PDBParser()#creamos un parse de pdb
         structure = parser.get_structure(self.pdb_code, self.path_download+self.pdb_code+".pdb")
         model = structure[0]
     
-        self.lista_de_errores = pd.DataFrame(columns=["cadena","pos","residuo_csv","residuo_pdb"])
+        self.lista_de_errores = pd.DataFrame(columns=["cadena","posi","residuo_csv","residuo_pdb"])
         residuos_pdb = []
         for chain in model:
             for residue in chain:
-                            
-                #print(chain.get_id()) #la cadena del pdb
-                #print(residue.get_id()[1]) #pos del pdb
-                #print(residue.get_resname()) #residuo del pdb
                 data = "%s-%s-%s"%(str(chain.get_id()),str(residue.get_id()[1]),str(residue.get_resname()))
                 residuos_pdb.append(data)
         
         residuos_csv = []
         for i in range(len(self.dataset)):
-            data_csv = data = "%s-%s-%s"%(str(self.dataset["chain"][i]),str(self.dataset["pos"][i]),str(self.dataset["wt"][i]))
+            data_csv = "%s-%s-%s"%(str(self.dataset["chain"][i]),str(self.dataset["pos"][i]),str(self.dataset["wt"][i]))
             residuos_csv.append(data_csv)  
 
         for residuo in residuos_csv:
             if (residuo not in residuos_pdb):
-                respuesta = self.comparar(residuo, residuos_pdb)
+                respuesta = self.comparar(residuo, residuos_pdb) #se llama a metodo comparar
                 if (respuesta == -1):
                     residuo_lista = residuo.split("-")
-                    self.lista_de_errores = self.lista_de_errores.append({"cadena":residuo_lista[0], "pos":residuo_lista[1], "residuo_csv":residuo_lista[2], "residuo_pdb":"-"}, ignore_index=True)
+                    self.lista_de_errores = self.lista_de_errores.append({"cadena":residuo_lista[0], "posi":residuo_lista[1], "residuo_csv":residuo_lista[2], "residuo_pdb":"-"}, ignore_index=True)
                 else:
                     residuo_lista = residuo.split("-")
                     residuo_pdb = respuesta[0].split("-")
-                    self.lista_de_errores = self.lista_de_errores.append({"cadena":residuo_lista[0], "pos":residuo_lista[1], "residuo_csv":residuo_lista[2], "residuo_pdb":residuo_pdb[2]}, ignore_index=True)
+                    self.lista_de_errores = self.lista_de_errores.append({"cadena":residuo_lista[0], "posi":residuo_lista[1], "residuo_csv":residuo_lista[2], "residuo_pdb":residuo_pdb[2]}, ignore_index=True)
 
         self.lista_de_errores.to_csv(self.path_download+"errors.csv",index = False)
 
@@ -131,6 +123,30 @@ class checks(object):
                 return -1
             else:
                 return candidato_pos
+
+
+    def cambiar(self):
+        print(self.dataset)
+        print(self.lista_de_errores)
+        elementos_csv = []
+        for index, lista in self.lista_de_errores.iterrows():
+            #print(lista['cadena'])
+            #print(lista['posi'])
+            #print(lista['residuo_csv'])
+            #print(lista['residuo_pdb'])
+            for index, dato in self.dataset.iterrows():
+                if (lista['cadena'] == dato['chain'] and lista['posi'] == str(dato['pos'])):
+                    if (lista['residuo_pdb'] != str("-")):
+                        self.dataset.at[index, "wt"] = lista['residuo_pdb']#index, columna = valor
+                        print(self.dataset)    
+        #self.dataset.to_csv(self.path_download+"clean.csv",index = False)
+        
+                
+        
+        
+            
+
+
 
         
                                        

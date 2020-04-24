@@ -24,10 +24,10 @@ $(document).ready(function() {
         validating: 'glyphicon glyphicon-refresh'
     },
     fields: {
-      exampleFormControlFile1: {
+      pdb_code: {
         validators: {
             notEmpty: {
-                message: 'The name of job is required'
+                message: 'The pdb code is required'
             }
         }
       },
@@ -53,18 +53,14 @@ $(document).ready(function() {
   $('#loading').show();
   
   e.preventDefault();
-      //var optionProcess = $("#initNewJob #optionProcess").val();
-      //var percentage = $("#initNewJob #percentage").val();
-      //var significanceLevel = $("#initNewJob #significanceLevel").val();
+      var pdb_code = $("#initNewJob #pdb_code").val();
       var nameJob = $("#initNewJob #nameJob").val();
       var descJob = $("#initNewJob #descJob").val();
       $.ajax({
         method: "POST",
         url: "../php/jobs/addData.php",
         data: {
-          //"optionProcess"   : optionProcess,
-          //"percentage"   : percentage,
-          //"significanceLevel"   : significanceLevel,
+          "pdb_code"   : pdb_code,
           "nameJob"   : nameJob,
           "descJob"   : descJob
         }

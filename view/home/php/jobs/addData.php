@@ -3,9 +3,7 @@
   include("../readDocument.php");
 
   #recibimos los parametros...
-  //$optionProcess = $_REQUEST['optionProcess'];
-  //$percentage = $_REQUEST['percentage'];
-  //$significanceLevel = $_REQUEST['significanceLevel'];
+  $pdb_code = $_REQUEST['pdb_code'];
   $nameJob = $_REQUEST['nameJob'];
   $descJob = $_REQUEST['descJob'];
 
