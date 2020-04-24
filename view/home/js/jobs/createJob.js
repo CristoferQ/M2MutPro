@@ -8,7 +8,7 @@ $(document).ready(function() {
     maxFilesize: 5, // MB
     url:"../php/uploadCsv.php",
         success: function (file1, response) {
-            file.previewElement.classList.add("dz-success");
+            file1.previewElement.classList.add("dz-success");
             console.log("Successfully uploaded :");
         },
         error: function (file1, response) {
@@ -66,12 +66,19 @@ $(document).ready(function() {
         }
       }).done(function(info){
         var response = JSON.parse(info);
-        if (response.file == "ERROR"){
+        
+        /*if (response.file == "ERROR"){
           alert("Se ha producido un error en la subida de archivos");
-          location.href="";
-        }
-        else{
-          if (response.exec == "ERROR"){
+          //location.href="";
+        }*/
+        //else{
+          var nameFile = "../../../jobs/"+response.user+"/"+response.job+"/results/summary_log.json";
+          readTextFile(nameFile, function(text){
+            var data = JSON.parse(text);
+            console.log(data);
+            //$(".precisionDefinition").html(data.definitionPerformanceCla[0].definition);
+          });
+          /*if (response.exec == "ERROR"){
             $('#loading').hide();
             var message = "Error during the creation of the job, please check the data set. If the error persists, please contact the administrator.";
             $(".messageError").html( message);
@@ -80,9 +87,22 @@ $(document).ready(function() {
             setTimeout("location.href=''", 5000);
           }else{
             var job = response.job;
-            location.href="123";
+            //location.href="../checkJob/index.html";
           }
-        }
+          */
+       // }
       });
     });
 });
+
+function readTextFile(file, callback) {
+  var rawFile = new XMLHttpRequest();
+  rawFile.overrideMimeType("application/json");
+  rawFile.open("GET", file, true);
+  rawFile.onreadystatechange = function() {
+      if (rawFile.readyState === 4 && rawFile.status == "200") {
+          callback(rawFile.responseText);
+      }
+  }
+  rawFile.send(null);
+}

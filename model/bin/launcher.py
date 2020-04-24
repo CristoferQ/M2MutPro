@@ -15,16 +15,26 @@ class Launcher(object):
     pdb_code = sys.argv[4]
     pathResponse = sys.argv[5]
     
+    response = {}
 
 
-    checking = checks.checks(csv,pdb_code,pathResponse)
-    #checking.evaluateCsv() 
-    #checking.evaluateNullData()
-    #checking.evaluatePdbDownload() 
-    checking.evaluatePdb()
-    checking.evaluateChains()
-    checking.evaluateResidues()
-    checking.cambiar()
+    try:    
+        checking = checks.checks(csv,pdb_code,pathResponse)
+        checking.evaluateCsv() 
+        checking.evaluateNullData()
+        checking.evaluatePdbDownload() 
+        checking.evaluatePdb()
+        checking.evaluateChains()
+        checking.evaluateResidues()
+        #checking.cambiar()
+        response.update({'exec':0}) #correcto
+        response.update({'evaluateCsv':checking.response})
+        response.update({'evaluatePdb':checking.response_download_pdb})
+        response.update({'evaluateReadPdb':checking.response_read_pdb})
+        response.update({'evaluateChains':checking.response_chains})
+    except:
+        response.update({'exec':1}) #error
+        pass
+    with open(pathResponse+"summary_log.json", 'w') as fp:
+        json.dump(response, fp)
 
-    #with open(pathResponse+"test.json", "w") as fp:
-    #   json.dump(results, fp)

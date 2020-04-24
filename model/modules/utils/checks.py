@@ -126,20 +126,15 @@ class checks(object):
 
 
     def cambiar(self):
-        print(self.dataset)
-        print(self.lista_de_errores)
-        elementos_csv = []
         for index, lista in self.lista_de_errores.iterrows():
-            #print(lista['cadena'])
-            #print(lista['posi'])
-            #print(lista['residuo_csv'])
-            #print(lista['residuo_pdb'])
             for index, dato in self.dataset.iterrows():
                 if (lista['cadena'] == dato['chain'] and lista['posi'] == str(dato['pos'])):
                     if (lista['residuo_pdb'] != str("-")):
-                        self.dataset.at[index, "wt"] = lista['residuo_pdb']#index, columna = valor
-                        print(self.dataset)    
-        #self.dataset.to_csv(self.path_download+"clean.csv",index = False)
+                        #el que tiene - no se cuenta
+                        #tener cuidado con los index cuando se elimina
+                        self.dataset.at[index, "wt"] = lista['residuo_pdb']#index, columna = valor  
+        self.dataset.to_csv(self.path_download+"clean.csv",index = False)
+        
         
                 
         

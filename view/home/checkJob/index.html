@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="../images/favicon.ico" type="image/ico" />
 
-    <title>Create Job</title>
+    <title>Check Job</title>
 
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -118,94 +118,17 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Create Job</h3>
+                <h3>Check Job</h3>
               </div>
             </div>
 
             <div class="clearfix"></div>
 
-            <div class="row">
-              <div class="col-md-12 col-sm-12  ">
-                <div class="x_panel">
-                  
-                  <form id="frmAgregarCsv" name="file1" action="../php/uploadCsv.php" class="dropzone" style="cursor:pointer;">
-                    <h3>Upload de csv file</h3>
-                    <div class="dz-default dz-message">
-                      <div class="dz-icon">
-                        <i class="demo-pli-upload-to-cloud icon-5x"></i>
-                      </div>
-                      <div>
-                        <span class="dz-text">Drop files to upload</span>
-                        <p class="text-sm text-muted">or click to pick manually</p>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-
-              </div>
-            </div>
             
-            <form id="initNewJob" method="post" class="form-horizontal form-label-left">
-              <div class="form-group">
-                      <label class="col-sm-5 control-label">Pdb Code*</label>
-                       <div class="col-sm-5">
-                           <input type="text" class="form-control" id="pdb_code" name="pdb_code" autocomplete="off"/>
-                       </div>
-                   </div>
-
-
-              <div class="form-group">
-                 <label class="col-sm-5 control-label">Name of job*</label>
-                  <div class="col-sm-5">
-                      <input type="text" class="form-control" id="nameJob" name="nameJob" autocomplete="off"/>
-                  </div>
-              </div>
-
-              <div class="form-group">
-                 <label class="col-sm-5 control-label">Description of job*</label>
-                  <div class="col-sm-5">
-                      <input type="text" class="form-control" id="descJob" name="descJob" autocomplete="off"/>
-                  </div>
-              </div>
-
-              <div class="ln_solid"></div>
-
-              <div class="form-group">
-                  <div class="col-sm-5 col-sm-offset-3">
-                    <button type="submit" id="processJob" class="btn btn-primary">Create Job</button>
-                  </div>
-              </div>
-            </form>
 
 
 
 
-
-
-
-            <div class="col-sm-12 col-md-12 col-lg-12" id="loading" style="display:none;">
-              <div class="panel">
-                  <div class="panel-body">
-                      <div class="sk-three-bounce">
-                          <div class="sk-child sk-bounce1"></div>
-                          <div class="sk-child sk-bounce2"></div>
-                          <div class="sk-child sk-bounce3"></div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-sm-12 col-md-12 col-lg-12" id="errorResponse" style="display:none;">
-            <div class="alert alert-danger" role="alert">
-              <p class="messageError"></p>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-12 col-lg-12" id="okResponse" style="display:none;">
-            <div class="alert alert-success" role="alert">
-              <p class="messageOK"></p>
-            </div>
-          </div>
 
 
 
