@@ -44,12 +44,13 @@
 
   #hacemos la ejecucion del script para el algoritmo
   $command = "python3 /var/www/html/M2MutPro/model/bin/launcher.py $nameJob $descJob $nameDocFull1 $pdb_code $pathResults";
+  #$command = "python3 /var/www/html/M2MutPro/model/bin/hola.py $nameJob $descJob $nameDocFull1 $pdb_code $pathResults";
   $response['command'] = $command;
-  #$output = [];
-  #exec($command, $output);
-  exec($command);
+  $output = [];
+  exec($command, $output);
+  #exec($command);
 
-  #$response['exec'] = $output[0];
+  $response['exec'] = $output[0];
 
   echo json_encode($response);
 

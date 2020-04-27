@@ -52,9 +52,9 @@ class checks(object):
             if len(ListResidues)>0:
                 self.response_read_pdb = 0 #correcto
             else:
-                self.response_download_pdb = 1
+                self.response_read_pdb = 1
         except:
-            self.response_download_pdb = 1
+            self.response_read_pdb = 1
 
     def evaluateChains(self):
         cadenas_csv = list(set(self.dataset['chain']))
@@ -130,11 +130,11 @@ class checks(object):
             for index, dato in self.dataset.iterrows():
                 if (lista['cadena'] == dato['chain'] and lista['posi'] == str(dato['pos'])):
                     if (lista['residuo_pdb'] != str("-")):
+                        #el que tiene - no se cuenta
+                        #tener cuidado con los index cuando se elimina
                         self.dataset.at[index, "wt"] = lista['residuo_pdb']#index, columna = valor  
         self.dataset.to_csv(self.path_download+"clean.csv",index = False)
         
-        
-                
         
         
             
