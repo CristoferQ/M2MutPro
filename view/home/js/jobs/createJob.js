@@ -66,20 +66,32 @@ $(document).ready(function() {
         }
       }).done(function(info){
         var response = JSON.parse(info);
-        
-        /*if (response.file == "ERROR"){
+        $('#loading').hide();
+
+        if (response.file == "ERROR"){
           alert("Se ha producido un error en la subida de archivos");
-          //location.href="";
-        }*/
-        //else{
-          var nameFile = "../../../jobs/"+response.user+"/"+response.job+"/results/summary_log.json";
+          location.href="";
+        }
+        else{
+          if (response.exec == "ok"){
+            location.href="../checkJob/?user="+response.user+"&job="+response.job;
+          }else{
+            alert("Se ha producido un error");
+            location.href="";
+          }
+          /*var nameFile = "../../../jobs/"+response.user+"/"+response.job+"/results/summary_log.json";
           readTextFile(nameFile, function(text){
             var data = JSON.parse(text);
             console.log(data);
+
+            if (data.exec == 0){
+
+            }
+          
             //$(".precisionDefinition").html(data.definitionPerformanceCla[0].definition);
-          });
+          });*/
           /*if (response.exec == "ERROR"){
-            $('#loading').hide();
+            
             var message = "Error during the creation of the job, please check the data set. If the error persists, please contact the administrator.";
             $(".messageError").html( message);
   
@@ -90,7 +102,7 @@ $(document).ready(function() {
             //location.href="../checkJob/index.html";
           }
           */
-       // }
+        }
       });
     });
 });

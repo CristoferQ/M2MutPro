@@ -25,8 +25,10 @@ class launcher(object):
         response.update({'evaluatePdbDownload':checking.response_download_pdb})
         response.update({'evaluatePdb':checking.response_read_pdb})
         #response.update({'evaluateChains':checking.response_chains})
+        print("ok")
     except:
         response.update({'exec':1}) #error
+        print("error")
 
     with open(pathResponse+"summary_log.json", 'w') as fp:
         json.dump(response, fp)
