@@ -11,14 +11,14 @@ class launcher(object):
     response = {}
 
 
-    try:    
+    try:
         checking = checks.checks(csv,pdb_code,pathResponse)
         checking.evaluateCsv() 
         checking.evaluateNullData()
         checking.evaluatePdbDownload() 
         checking.evaluatePdb()
         #checking.evaluateChains()
-        #checking.evaluateResidues()
+        checking.evaluateResidues()
         #checking.cambiar()
         response.update({'exec':0}) #correcto
         response.update({'evaluateCsv':checking.response})

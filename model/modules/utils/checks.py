@@ -2,6 +2,7 @@ import pandas as pd
 import urllib
 import os
 from Bio.PDB.PDBParser import PDBParser
+import json
 
 class checks(object):
 
@@ -76,6 +77,8 @@ class checks(object):
         else:
             self.response_chains = 1
     def evaluateResidues(self):
+
+        data_to_matrix = []
         parser = PDBParser()#creamos un parse de pdb
         structure = parser.get_structure(self.pdb_code, self.path_download+self.pdb_code+".pdb")
         model = structure[0]
@@ -95,15 +98,23 @@ class checks(object):
         for residuo in residuos_csv:
             if (residuo not in residuos_pdb):
                 respuesta = self.comparar(residuo, residuos_pdb) #se llama a metodo comparar
+                row = []
                 if (respuesta == -1):
                     residuo_lista = residuo.split("-")
+                    row = [residuo_lista[0],residuo_lista[1], residuo_lista[2],"-"]
                     self.lista_de_errores = self.lista_de_errores.append({"cadena":residuo_lista[0], "posi":residuo_lista[1], "residuo_csv":residuo_lista[2], "residuo_pdb":"-"}, ignore_index=True)
                 else:
                     residuo_lista = residuo.split("-")
                     residuo_pdb = respuesta[0].split("-")
                     self.lista_de_errores = self.lista_de_errores.append({"cadena":residuo_lista[0], "posi":residuo_lista[1], "residuo_csv":residuo_lista[2], "residuo_pdb":residuo_pdb[2]}, ignore_index=True)
-
+                    row = [residuo_lista[0],residuo_lista[1], residuo_lista[2],"-"]
+                data_to_matrix.append(row)
         self.lista_de_errores.to_csv(self.path_download+"errors.csv",index = False)
+
+        #process data to json 
+        data_json = {"data":data_to_matrix}
+        with open(self.path_download+"error.json", 'w') as fp:
+            json.dump(data_json, fp)
 
 
     def comparar(self, residuo_csv, lista_residuo_pdb):
