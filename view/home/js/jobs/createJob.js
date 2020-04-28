@@ -76,10 +76,12 @@ $(document).ready(function() {
         }
         else{
           if (response.exec == "ok"){
+            //lectura del json y depediendo de los valores generar diferentes errores
             var message = "Correcto";
             $("#success_text").html( message);
             $('#okResponse').show();
-            location.href="../checkJob/?user="+response.user+"&job="+response.job;
+            var ruta = "location.href=\"../checkJob/?user="+response.user+"&job="+response.job+"\"";
+            setTimeout(ruta, 3000);
           }else{
             var message = "Se ha producido un error";
             $("#error_text").html( message);
