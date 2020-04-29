@@ -12,23 +12,21 @@ class launcher(object):
 
 
     try:
+        response.update({'exec':0}) #correcto
         checking = checks.checks(csv,pdb_code,pathResponse)
         checking.evaluateCsv() 
+        response.update({'evaluateCsv':checking.response_read_csv})
         checking.evaluateNullData()
         checking.evaluatePdbDownload() 
-        checking.evaluatePdb()
-        #checking.evaluateChains()
-        checking.evaluateResidues()
-        #checking.cambiar()
-        response.update({'exec':0}) #correcto
-        response.update({'evaluateCsv':checking.response})
         response.update({'evaluatePdbDownload':checking.response_download_pdb})
+        checking.evaluatePdb()
         response.update({'evaluatePdb':checking.response_read_pdb})
-        #response.update({'evaluateChains':checking.response_chains})
-        print("ok")
+        checking.evaluateChains()
+        response.update({'evaluateChains':checking.response_chains})
+        checking.evaluateResidues()
+        #checking.cambiar()    
     except:
         response.update({'exec':1}) #error
-        print("error")
 
     with open(pathResponse+"summary_log.json", 'w') as fp:
         json.dump(response, fp)

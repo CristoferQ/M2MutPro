@@ -122,6 +122,26 @@
             </div>
 
             <div class="clearfix"></div>            
+            <div class="table-responsive">
+              <table class="table table-striped jambo_table">
+                <thead>
+                    <th class="column-title">Name of check</th>
+                    <th class="column-title">Status</th>
+                  
+                </thead>
+
+                <tbody>
+                  <tr class="even pointer">
+                    <td>exec</td>
+                    <td id="exec_value"></td>
+                  </tr>
+                  <tr class="odd pointer" style="display:none;" id="">
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
             <div class="row">
               <div class="col-md-12">
@@ -131,13 +151,11 @@
                         <th>Name</th>
                         <th>Position</th>
                         <th>Office</th>
-                        <th>Extn.</th>
-                        
+                        <th>Extn.</th>        
                     </tr>
                 </thead>
-                
-                <tbody>
-                  
+
+                <tbody>  
                 </tbody>
             </table>
           </div>
@@ -190,6 +208,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
+    <script src="../js/jobs/showChecks.js"></script>
     <script src="../js/jobs/test.js"></script>
   </body>
 </html>

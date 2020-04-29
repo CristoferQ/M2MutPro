@@ -65,30 +65,56 @@ $(document).ready(function() {
           "descJob"   : descJob
         }
       }).done(function(info){
-        var response = JSON.parse(info);
         $('#loading').hide();
-
+        var response = JSON.parse(info);
         if (response.file == "ERROR"){
           var message = "Error con el archivo";
           $("#error_text").html( message);
           $('#errorResponse').show();
-          setTimeout("location.href=''", 5000);
+          //setTimeout("location.href=''", 5000);
         }
-        else{
-          if (response.exec == "ok"){
-            //lectura del json y depediendo de los valores generar diferentes errores
-            var message = "Correcto";
-            $("#success_text").html( message);
-            $('#okResponse').show();
-            var ruta = "location.href=\"../checkJob/?user="+response.user+"&job="+response.job+"\"";
-            setTimeout(ruta, 3000);
-          }else{
-            var message = "Se ha producido un error";
-            $("#error_text").html( message);
-            $('#errorResponse').show();
-            setTimeout("location.href=''", 5000);
-          }
-          
+        else{ 
+          var nameFile = "../../../jobs/"+response.user+"/"+response.job+"/results/summary_log.json";
+          readTextFile(nameFile, function(text){
+            var data = JSON.parse(text);
+            if (data.exec == 0){
+              var message = "Correcto";
+              $("#success_text").html(message);
+              $('#okResponse').show();
+              var ruta = "location.href=\"../checkJob/?user="+response.user+"&job="+response.job+"\"";
+              setTimeout(ruta, 3000);
+            }
+            else if(data.evaluateCsv == 1){
+              var message = "Se ha producido un error al evaluar el csv";
+              $("#error_text").html(message);
+              $('#errorResponse').show();
+              setTimeout("location.href=''", 5000);
+            }
+            else if(data.evaluatePdbDownload == 1){
+              var message = "Se ha producido un error al descargar el pdb";
+              $("#error_text").html(message);
+              $('#errorResponse').show();
+              setTimeout("location.href=''", 5000);
+            }
+            else if (data.evaluatePdb == 1){
+              var message = "Se ha producido un error al evaluar el pdb";
+              $("#error_text").html(message);
+              $('#errorResponse').show();
+              setTimeout("location.href=''", 5000);
+            }
+            else if (data.evaluateChains == 1){
+              var message = "Se ha producido un error al evaluar las cadenas";
+              $("#error_text").html(message);
+              $('#errorResponse').show();
+              setTimeout("location.href=''", 5000);
+            }
+            else{
+              var message = "Se ha producido un error";
+              $("#error_text").html(message);
+              $('#errorResponse').show();
+              setTimeout("location.href=''", 5000);
+            }
+          });
         }
       });
     });

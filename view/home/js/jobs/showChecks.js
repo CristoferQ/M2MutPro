@@ -10,7 +10,7 @@ $(document).ready(function() {
           readTextFile(nameFile, function(text){
             var data = JSON.parse(text);
             console.log(data);  
-            $("#show").html(data.exec);
+            $("#exec_value").html(data.exec);
           });
   }
 
