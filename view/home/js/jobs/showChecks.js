@@ -11,6 +11,10 @@ $(document).ready(function() {
             var data = JSON.parse(text);
             console.log(data);  
             $("#exec_value").html(data.exec);
+            $("#evaluateCsv_value").html(data.evaluateCsv);
+            $("#evaluatePdbDownload_value").html(data.evaluatePdbDownload);
+            $("#evaluatePdb_value").html(data.evaluatePdb);
+            $("#evaluateChains_value").html(data.evaluateChains);
           });
   }
 

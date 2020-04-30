@@ -120,8 +120,10 @@
                 <h3>Check Job</h3>
               </div>
             </div>
-
+            
             <div class="clearfix"></div>            
+            <h2>Table of checks</h2>
+            
             <div class="table-responsive">
               <table class="table table-striped jambo_table">
                 <thead>
@@ -135,23 +137,40 @@
                     <td>exec</td>
                     <td id="exec_value"></td>
                   </tr>
-                  <tr class="odd pointer" style="display:none;" id="">
-                    <td></td>
-                    <td></td>
+                  <tr class="odd pointer">
+                    <td>evaluateCsv</td>
+                    <td id="evaluateCsv_value"></td>
+                  </tr>
+                  <tr class="even pointer">
+                    <td>evaluatePdbDownload</td>
+                    <td id="evaluatePdbDownload_value"></td>
+                  </tr>
+                  <tr class="odd pointer">
+                    <td>evaluatePdb</td>
+                    <td id="evaluatePdb_value"></td>
+                  </tr>
+                  <tr class="even pointer">
+                    <td>evaluateChains</td>
+                    <td id="evaluateChains_value"></td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div class="row">
+
+
+
+            <div class="clearfix"></div>    
+            <h2>Table of errors</h2>
+            <div class="row">  
               <div class="col-md-12">
               <table id="example" class="table table-striped table-bordered display " style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Chain</th>
                         <th>Position</th>
-                        <th>Office</th>
-                        <th>Extn.</th>        
+                        <th>Residue Wild Type CSV</th>
+                        <th>Residue PDB</th>        
                     </tr>
                 </thead>
 
