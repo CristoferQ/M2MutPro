@@ -15,7 +15,7 @@ class SetupConfiguration:
             author='Cristofer Quiroz',
             author_email='ceql@live.cl',
             license='Open GPL 3',
-            packages=['modules', 'modules.database', 'modules.services', 'modules.utils'],)
+            packages=['modules', 'modules.database', 'modules.dataset', 'modules.services', 'modules.utils'])
 
 def main():
 
