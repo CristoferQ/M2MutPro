@@ -10,12 +10,19 @@ $(document).ready(function() {
           readTextFile(nameFile, function(text){
             var data = JSON.parse(text);
             console.log(data);  
+            //tabla fija
             $("#exec_value").html(data.exec);
             $("#evaluateCsv_value").html(data.evaluateCsv);
             $("#evaluatePdbDownload_value").html(data.evaluatePdbDownload);
             $("#evaluatePdb_value").html(data.evaluatePdb);
             $("#evaluateChains_value").html(data.evaluateChains);
-          });
+            //tabla dinamica
+            var url = "../../../jobs/"+user+"/"+job+"/results/error.json";
+            console.log(url);
+              $('#example').DataTable( {
+                  "ajax": url
+              } );
+        });
   }
 
   function readTextFile(file, callback) {

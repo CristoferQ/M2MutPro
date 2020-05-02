@@ -1,5 +1,4 @@
 import pandas as pd
-import urllib
 import os
 from Bio.PDB.PDBParser import PDBParser
 import json
@@ -13,7 +12,7 @@ class checks(object):
         self.path_download = path_download
         
     def cambiar(self):
-        for index, lista in self.lista_de_errores.iterrows():
+        for index, lista in lista_de_errores.iterrows():
             for index, dato in self.dataset.iterrows():
                 if (lista['cadena'] == dato['chain'] and lista['posi'] == str(dato['pos'])):
                     if (lista['residuo_pdb'] != str("-")):
@@ -22,8 +21,7 @@ class checks(object):
                         self.dataset.at[index, "wt"] = lista['residuo_pdb']#index, columna = valor  
         self.dataset.to_csv(self.path_download+"clean.csv",index = False)
         
-        
-        
+    
             
 
 

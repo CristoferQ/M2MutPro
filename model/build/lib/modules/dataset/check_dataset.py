@@ -4,8 +4,7 @@ import os
 from Bio.PDB.PDBParser import PDBParser
 import json
 
-class checks(object):
-
+class check_dataset(object):
     def __init__(self, csv, pdb_code, path_download):
         self.dataset = pd.read_csv(csv)
         self.dataset_name = csv
@@ -100,7 +99,7 @@ class checks(object):
 
         for residuo in residuos_csv:
             if (residuo not in residuos_pdb):
-                respuesta = self.comparar(residuo, residuos_pdb) #se llama a metodo comparar
+                respuesta = self.compare(residuo, residuos_pdb) #se llama a metodo compare
                 row = []#se crea la row para ingresar a data_to_matrix
                 if (respuesta == -1):
                     residuo_lista = residuo.split("-")
@@ -120,7 +119,7 @@ class checks(object):
             json.dump(data_json, fp)
 
 
-    def comparar(self, residuo_csv, lista_residuo_pdb):
+    def compare(self, residuo_csv, lista_residuo_pdb):
         data1 = residuo_csv.split("-")
         candidato_cadena = []
         candidato_pos = []
@@ -137,19 +136,6 @@ class checks(object):
                 return -1
             else:
                 return candidato_pos
-
-
-    def cambiar(self):
-        for index, lista in self.lista_de_errores.iterrows():
-            for index, dato in self.dataset.iterrows():
-                if (lista['cadena'] == dato['chain'] and lista['posi'] == str(dato['pos'])):
-                    if (lista['residuo_pdb'] != str("-")):
-                        #el que tiene - no se cuenta
-                        #tener cuidado con los index cuando se elimina
-                        self.dataset.at[index, "wt"] = lista['residuo_pdb']#index, columna = valor  
-        self.dataset.to_csv(self.path_download+"clean.csv",index = False)
-        
-        
         
             
 

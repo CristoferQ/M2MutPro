@@ -4,8 +4,7 @@ import os
 from Bio.PDB.PDBParser import PDBParser
 import json
 
-class checks(object):
-
+class check_dataset(object):
     def __init__(self, csv, pdb_code, path_download):
         self.dataset = pd.read_csv(csv)
         self.dataset_name = csv

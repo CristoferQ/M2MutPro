@@ -3,12 +3,10 @@ from modules.dataset import check_dataset
 
 class handler_dataset(object):
     def __init__(self, csv, pdb_code, pathResponse):
-        print("1")
         self.csv = csv
         self.pdb_code = pdb_code
         self.pathResponse = pathResponse
-    def check_dataset(self):
-        print("ok")
+    
         response = {}
         try:
             response.update({'exec':0}) #correcto
