@@ -1,12 +1,14 @@
 import json
 from modules.dataset import check_dataset
+from modules.dataset import prepare_dataset
 
 class handler_dataset(object):
-    def __init__(self, csv, pdb_code, pathResponse):
+    
+    def check_dataset(self, csv, pdb_code, pathResponse):
         self.csv = csv
         self.pdb_code = pdb_code
         self.pathResponse = pathResponse
-    
+
         response = {}
         try:
             response.update({'exec':0}) #correcto
@@ -26,4 +28,10 @@ class handler_dataset(object):
 
         with open(pathResponse+"summary_log.json", 'w') as fp:
             json.dump(response, fp)
-
+    def prepare_dataset(self, csv, pathResponse):
+        self.csv = csv
+        self.pathResponse = pathResponse
+        preparing = prepare_dataset.prepare_dataset(self.csv,self.pathResponse)
+        preparing.filter()
+        #preparing.ignore()
+        

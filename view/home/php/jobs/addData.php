@@ -43,7 +43,8 @@
   $pathResults = $path."results/";
 
   #hacemos la ejecucion del script para el algoritmo
-  $command = "python3 /var/www/html/M2MutPro/model/bin/launcher.py $nameJob $descJob $nameDocFull1 $pdb_code $pathResults";
+  $option = 1;
+  $command = "python3 /var/www/html/M2MutPro/model/bin/launcher.py $nameJob $descJob $nameDocFull1 $pdb_code $pathResults $option";
   #$command = "python3 /var/www/html/M2MutPro/model/bin/hola.py $nameJob $descJob $nameDocFull1 $pdb_code $pathResults";
   $response['command'] = $command;
   #$output = [];

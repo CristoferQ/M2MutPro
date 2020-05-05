@@ -1,5 +1,8 @@
 $(document).ready(function() {
     loadData();
+
+    var ignore = document.getElementById('ignore');
+    var filter = document.getElementById('filter');
   });
   
   function loadData(){
