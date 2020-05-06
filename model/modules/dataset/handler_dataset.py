@@ -16,6 +16,7 @@ class handler_dataset(object):
             checking.evaluateCsv() 
             response.update({'evaluateCsv':checking.response_read_csv})
             checking.evaluateNullData()
+            response.update({'evaluateNullData':checking.responde_null_data})
             checking.evaluatePdbDownload()
             response.update({'evaluatePdbDownload':checking.response_download_pdb})
             checking.evaluatePdb()
@@ -28,10 +29,14 @@ class handler_dataset(object):
 
         with open(pathResponse+"summary_log.json", 'w') as fp:
             json.dump(response, fp)
-    def prepare_dataset(self, csv, pathResponse):
+    def prepare_dataset(self, csv, pathResponse,opc):
         self.csv = csv
         self.pathResponse = pathResponse
+        self.opc = opc
         preparing = prepare_dataset.prepare_dataset(self.csv,self.pathResponse)
-        #preparing.filter()
-        #preparing.ignore()
+        if (opc == 0):
+            preparing.ignore()
+        elif (opc == 1):
+            preparing.filter()
+        
         

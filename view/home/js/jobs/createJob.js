@@ -71,7 +71,7 @@ $(document).ready(function() {
           var message = "Error con el archivo";
           $("#error_text").html( message);
           $('#errorResponse').show();
-          //setTimeout("location.href=''", 5000);
+          setTimeout("location.href=''", 5000);
         }
         else{ 
           var nameFile = "../../../jobs/"+response.user+"/"+response.job+"/results/summary_log.json";

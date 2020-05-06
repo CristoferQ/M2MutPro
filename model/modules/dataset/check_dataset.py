@@ -14,6 +14,7 @@ class check_dataset(object):
         self.response_download_pdb = 0
         self.response_read_pdb = 0
         self.response_chains = 0
+        self.responde_null_data = 0
     def evaluateCsv(self): #evalua si el csv no esta vacio
         try:
             for key in self.dataset.keys():
@@ -27,8 +28,10 @@ class check_dataset(object):
         len1 = len(self.dataset)
         self.dataset = self.dataset.dropna(how='any',axis=0)
         len2 = len(self.dataset)
-        self.dif = len1-len2
-        self.dataset.to_csv(self.dataset_name,index = False)
+        dif = len1-len2
+        self.responde_null_data = dif
+        #self.dataset.to_csv(self.dataset_name,index = False)
+        self.dataset.to_csv(self.path_download+"dirty.csv",index = False)
 
     def evaluatePdbDownload(self): #evalua si se pudo descargar el pdb o no
         ruta = "http://files.rcsb.org/download/"+self.pdb_code+".pdb"
