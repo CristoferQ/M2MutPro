@@ -1,6 +1,7 @@
 import json
 from modules.dataset import check_dataset
 from modules.dataset import prepare_dataset
+from modules.dataset import statistics_dataset
 
 class handler_dataset(object):
     
@@ -38,5 +39,13 @@ class handler_dataset(object):
             preparing.ignore()
         elif (opc == 1):
             preparing.filter()
-        
+    def statistics_dataset(self, pathResponse):
+        self.pathResponse = pathResponse
+        statistics = statistics_dataset.statistics_dataset(self.pathResponse)
+        statistics.count1()
+        statistics.count2()
+        statistics.count3()
+        statistics.count4()
+        statistics.counter()
+        statistics.json()
         

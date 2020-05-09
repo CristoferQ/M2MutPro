@@ -5,25 +5,22 @@ $(document).ready(function() {
   });
   
   function loadData(){
-      var user = getQuerystring("user");
-      var job = getQuerystring("job");
 
-    var nameFile = "../../../jobs/"+user+"/"+job+"/results/summary_log.json";
+    //var nameFile = "../../../jobs/"+user+"/"+job+"/results/summary_log.json";
+    var nameFile = "../../../jobs/"+1+"/"+1588746035+"/results/statistics.json";
           readTextFile(nameFile, function(text){
             var data = JSON.parse(text);
             console.log(data);  
             //tabla fija
-            $("#exec_value").html(data.exec);
-            $("#evaluateCsv_value").html(data.evaluateCsv);
-            $("#evaluateNullData_value").html(data.evaluateNullData);
-            $("#evaluatePdbDownload_value").html(data.evaluatePdbDownload);
-            $("#evaluatePdb_value").html(data.evaluatePdb);
-            $("#evaluateChains_value").html(data.evaluateChains);
-            //tabla dinamica
-            var url = "../../../jobs/"+user+"/"+job+"/results/error.json";
-              $('#example').DataTable( {
-                  "ajax": url
-              } );
+            var data = [
+              {
+                x: data.counter_x,
+                y: data.counter_y,
+                type: 'bar'
+              }
+            ];
+            
+            Plotly.newPlot('myDiv', data);
         });
   }
 

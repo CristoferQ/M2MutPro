@@ -22,5 +22,8 @@ class launcher(object):
         pathResponse = sys.argv[3]
         opc = int(sys.argv[4])
         h_dataset.prepare_dataset(csv,pathResponse,opc)
+    elif (option == 3):
+        pathResponse = sys.argv[2]
+        h_dataset.statistics_dataset(pathResponse)
     else:
         print("option else")
