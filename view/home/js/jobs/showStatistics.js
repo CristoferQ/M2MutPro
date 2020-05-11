@@ -14,14 +14,29 @@ $(document).ready(function() {
             //tabla fija
             var data = [
               {
-                x: data.counter_x,
-                y: data.counter_y,
+                x: data.count1.counter_x,
+                y: data.count1.counter_y,
                 type: 'bar'
               }
             ];
             
-            Plotly.newPlot('myDiv', data);
+            Plotly.newPlot('count1', data);
         });
+        var nameFile = "../../../jobs/"+1+"/"+1588746035+"/results/statistics.json";
+        readTextFile(nameFile, function(text){
+          var data = JSON.parse(text);
+          console.log(data);  
+          //tabla fija
+          var data = [
+            {
+              x: data.count2.counter_x,
+              y: data.count2.counter_y,
+              type: 'bar'
+            }
+          ];
+          
+          Plotly.newPlot('count2', data);
+      });
   }
 
   function readTextFile(file, callback) {

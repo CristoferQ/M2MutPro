@@ -44,8 +44,5 @@ class handler_dataset(object):
         statistics = statistics_dataset.statistics_dataset(self.pathResponse)
         statistics.count1()
         statistics.count2()
-        statistics.count3()
-        statistics.count4()
-        statistics.counter()
         statistics.json()
         
