@@ -22,7 +22,6 @@ $(document).ready(function() {
             
             Plotly.newPlot('count1', data);
         });
-        var nameFile = "../../../jobs/"+1+"/"+1588746035+"/results/statistics.json";
         readTextFile(nameFile, function(text){
           var data = JSON.parse(text);
           console.log(data);  
@@ -37,6 +36,45 @@ $(document).ready(function() {
           
           Plotly.newPlot('count2', data);
       });
+      readTextFile(nameFile, function(text){
+        var data = JSON.parse(text);
+        console.log(data);  
+        //tabla fija
+        var data = [
+          {
+            x: data.count3.counter_x,
+            y: data.count3.counter_y,
+            type: 'bar'
+          }
+        ];
+        
+        Plotly.newPlot('count3', data);
+    });
+    readTextFile(nameFile, function(text){
+      var data = JSON.parse(text);
+      console.log(data);  
+      //tabla fija
+      var data = [
+        {
+          x: data.count4.counter_x,
+          y: data.count4.counter_y,
+          type: 'bar'
+        }
+      ];
+      
+      Plotly.newPlot('count4', data);
+  });
+  readTextFile(nameFile, function(text){
+    var data = JSON.parse(text);
+    console.log(data);  
+    //tabla fija
+    var trace = {
+        x: data.count5.counter_x,
+        type: 'histogram',
+      };
+    var data = [trace];
+    Plotly.newPlot('count5', data);
+  });
   }
 
   function readTextFile(file, callback) {
