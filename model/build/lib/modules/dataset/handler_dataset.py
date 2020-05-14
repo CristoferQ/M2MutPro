@@ -47,5 +47,6 @@ class handler_dataset(object):
         statistics.count3()
         statistics.count4()
         statistics.count5()
+        statistics.count6()
         statistics.json()
         

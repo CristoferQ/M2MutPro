@@ -63,8 +63,19 @@ class statistics_dataset(object):
         self.data['count4'].update({"counter_y":values})
 
     def count5(self):
-        count = list(set(self.clean_dataset['pos']))
+        count = list(self.clean_dataset['pos'])
         self.data['count5'].update({"counter_x":count})
+
+    def count6(self):
+        residuesValidsDic = {'ALA': {}, 'LYS': {}, 'ARG': {}, 'HIS': {}, 'PHE': {}, 'THR': {}, 'PRO': {}, 'MET': {}, 'GLY': {}, 'ASN': {}, 'ASP': {}, 'GLN': {}, 'GLU': {}, 'SER': {}, 'TYR': {}, 'TRP': {}, 'VAL': {}, 'ILE': {}, 'LEU': {}, 'CYS': {}}        
+        for index, fila in self.clean_dataset.iterrows():
+            if(residuesValidsDic[fila['wt']].get(fila['mt']) == None):
+                residuesValidsDic[fila['wt']].update({fila['mt']:1})
+            else:
+                residuesValidsDic[fila['wt']].update({fila['mt']:residuesValidsDic[fila['wt']].get(fila['mt'])+1})
+        print(residuesValidsDic)
+        
+        
 
     def json(self):
         with open(self.path_download+"statistics.json", 'w') as fp:
