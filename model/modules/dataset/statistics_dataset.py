@@ -71,6 +71,10 @@ class statistics_dataset(object):
         for index, fila in self.clean_dataset.iterrows():
             residuesValidsDic[fila['wt']].update({fila['mt']:residuesValidsDic[fila['wt']].get(fila['mt'])+1})
         print(residuesValidsDic)
+        keys = list(residuesValidsDic.keys())
+        values = list(residuesValidsDic['VAL'].values())
+        self.data['count6'].update({"counter_x":keys})
+        self.data['count6'].update({"counter_y":values})
         
     def json(self):
         with open(self.path_download+"statistics.json", 'w') as fp:
