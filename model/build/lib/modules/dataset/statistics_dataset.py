@@ -72,7 +72,12 @@ class statistics_dataset(object):
             residuesValidsDic[fila['wt']].update({fila['mt']:residuesValidsDic[fila['wt']].get(fila['mt'])+1})
         print(residuesValidsDic)
         keys = list(residuesValidsDic.keys())
-        values = list(residuesValidsDic['VAL'].values())
+        values = []
+        values.append(list(residuesValidsDic['VAL'].values()))
+        values.append(list(residuesValidsDic['SER'].values()))
+        values.append(list(residuesValidsDic['ALA'].values()))
+        values.append(list(residuesValidsDic['LYS'].values()))
+        values.append(list(residuesValidsDic['ARG'].values()))
         self.data['count6'].update({"counter_x":keys})
         self.data['count6'].update({"counter_y":values})
         
