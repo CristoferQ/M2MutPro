@@ -1,7 +1,5 @@
 $(document).ready(function() {
     loadData();
-    ignore();
-    filter();
   });
   
   function loadData(){
@@ -75,6 +73,37 @@ $(document).ready(function() {
     var data = [trace];
     Plotly.newPlot('count5', data);
   });
+  readTextFile(nameFile, function(text){
+    var data = JSON.parse(text);
+    console.log(data);  
+    for (let i = 0; i < data.count6.counter_y.length; i++) {
+      var allZeros = data.count6.counter_y[i].every(zeroTest);
+      if (allZeros == true){
+        $("#"+[i]).hide();
+      }
+    }
+  });
+  $('select').on('change', function() {
+    readTextFile(nameFile, function(text){
+      var valor = $("#select").val();
+      var texto = $("option:selected").text();
+  
+      var data = JSON.parse(text);
+      console.log(data);  
+      var data = [{
+        textposition: 'inside',
+        values: data.count6.counter_y[valor],
+        labels: data.count6.counter_x,
+        type: 'pie'
+      
+      }];
+      var layout = {
+        title: texto,
+      };
+      Plotly.newPlot('count6', data, layout);
+    });
+    console.log(this.value);
+  });
   }
 
   function readTextFile(file, callback) {
@@ -95,47 +124,6 @@ $(document).ready(function() {
 	var c = url.searchParams.get(key);
 	return c;
 };
-
-var ignore = function(){
-	$("#ignore").on("click", function(){
-    var user = getQuerystring("user");
-    var job = getQuerystring("job");
-    var opc = 0
-		$.ajax({
-			method:"GET",
-			url: "../php/jobs/cleanCsv.php",
-			data: {
-        user,job,opc
-			}
-		}).done( function( info ){
-      var json_info = JSON.parse( info );
-      var message = "Ignore correcto";
-      $("#success_text").html(message);
-      $('#okResponse').show();
-      var ruta = "location.href=\"../jobStatistics/\"";
-      setTimeout(ruta, 3000);
-		});
-	});
-}
-
-var filter = function(){
-	$("#filter").on("click", function(){
-    var user = getQuerystring("user");
-    var job = getQuerystring("job");
-    var opc = 1
-		$.ajax({
-			method:"GET",
-			url: "../php/jobs/cleanCsv.php",
-			data: {
-        user,job,opc
-			}
-		}).done( function( info ){
-      var json_info = JSON.parse( info );
-      var message = "Filter correcto";
-      $("#success_text").html(message);
-      $('#okResponse').show();
-      var ruta = "location.href=\"../jobStatistics/\"";
-      setTimeout(ruta, 3000);
-		});
-	});
+function zeroTest(element) {
+  return element === 0;
 }
