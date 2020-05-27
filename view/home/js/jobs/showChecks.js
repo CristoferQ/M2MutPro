@@ -62,7 +62,7 @@ var ignore = function(){
       var message = "Ignore correcto";
       $("#success_text").html(message);
       $('#okResponse').show();
-      var ruta = "location.href=\"../jobStatistics/\"";
+      var ruta = "location.href=\"../jobStatistics/?user="+user+"&job="+job+"\"";
       setTimeout(ruta, 3000);
 		});
 	});
@@ -84,7 +84,7 @@ var filter = function(){
       var message = "Filter correcto";
       $("#success_text").html(message);
       $('#okResponse').show();
-      var ruta = "location.href=\"../jobStatistics/\"";
+      var ruta = "location.href=\"../jobStatistics/?user="+user+"&job="+job+"\"";
       setTimeout(ruta, 3000);
 		});
 	});

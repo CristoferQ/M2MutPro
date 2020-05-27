@@ -3,9 +3,16 @@ $(document).ready(function() {
   });
   
   function loadData(){
-
-    //var nameFile = "../../../jobs/"+user+"/"+job+"/results/summary_log.json";
-    var nameFile = "../../../jobs/"+1+"/"+1588746035+"/results/statistics.json";
+    var user = getQuerystring("user");
+    var job = getQuerystring("job");
+    $.ajax({
+			method:"GET",
+			url: "../php/jobs/statisticsCsv.php",
+			data: {
+        user,job
+			}
+		}).done( function( info ){
+    var nameFile = "../../../jobs/"+user+"/"+job+"/results/statistics.json";
           readTextFile(nameFile, function(text){
             var data = JSON.parse(text);
             console.log(data);  
@@ -61,8 +68,8 @@ $(document).ready(function() {
       ];
       
       Plotly.newPlot('count4', data);
-  });
-  readTextFile(nameFile, function(text){
+    });
+    readTextFile(nameFile, function(text){
     var data = JSON.parse(text);
     console.log(data);  
     //tabla fija
@@ -72,8 +79,8 @@ $(document).ready(function() {
       };
     var data = [trace];
     Plotly.newPlot('count5', data);
-  });
-  readTextFile(nameFile, function(text){
+    });
+    readTextFile(nameFile, function(text){
     var data = JSON.parse(text);
     console.log(data);  
     for (let i = 0; i < data.count6.counter_y.length; i++) {
@@ -82,8 +89,8 @@ $(document).ready(function() {
         $("#"+[i]).hide();
       }
     }
-  });
-  $('select').on('change', function() {
+    });
+    $('select').on('change', function() {
     readTextFile(nameFile, function(text){
       var valor = $("#select").val();
       var texto = $("option:selected").text();
@@ -103,8 +110,10 @@ $(document).ready(function() {
       Plotly.newPlot('count6', data, layout);
     });
     console.log(this.value);
+    });
   });
-  }
+  
+  
 
   function readTextFile(file, callback) {
     var rawFile = new XMLHttpRequest();
@@ -123,7 +132,8 @@ $(document).ready(function() {
 	var url = new URL(url_string);
 	var c = url.searchParams.get(key);
 	return c;
-};
-function zeroTest(element) {
+  }
+  function zeroTest(element) {
   return element === 0;
+  }
 }
