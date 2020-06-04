@@ -1,6 +1,9 @@
 <?php
   
   include("../readDocument.php");
+  include("../connectDatabase.php");
+  include("../checkDatabase.php");
+
   $idUSer = "1";
  
   #recibimos los parametros...
@@ -28,6 +31,18 @@
   }
 
   #movemos el archivo...
+  #hacemos la insercion a la base de datos...
+  #$query = "insert into job values ($idJob, '$nameJob', '$descJob','Created', NOW(), NOW(), $idUSer, '$nameDocument')";
+  $query = "insert into job values ($idJob, '$nameJob', '$descJob','Created', 2020-01-01 10:10:10, 2020-01-01 10:10:10, $idUSer, '$nameDocument')";
+  
+  
+  #$query2 = "insert into dataSet values ($idJob, '$nameDocument', NOW(), NOW(), $idUSer, '$kind', $idJob)";
+  $resultado = mysqli_query($conexion, $query);
+  #$resultado2 = mysqli_query($conexion, $query2);
+  $requestData = verificar_resultado($resultado);
+
+  #$response ['queriesInsert'] = $requestData;
+
   //movemos el archivo al path de la licitacion...
   
   $command = "mv $pathActual $path";
