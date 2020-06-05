@@ -32,16 +32,21 @@
 
   #movemos el archivo...
   #hacemos la insercion a la base de datos...
-  #$query = "insert into job values ($idJob, '$nameJob', '$descJob','Created', NOW(), NOW(), $idUSer, '$nameDocument')";
-  $query = "insert into job values ($idJob, '$nameJob', '$descJob','Created', 2020-01-01 10:10:10, 2020-01-01 10:10:10, $idUSer, '$nameDocument')";
   
+  $query2 = "insert into dataSet values ($idJob, '$nameDocument', 'tipoA', NOW(), NOW())";
+  $query = "insert into job values ($idJob, '$nameJob', '$descJob', 'Created', NOW(), NOW(), $idUSer, '$idJob')";
+  $resultado2 = mysqli_query($conexion, $query2);
+  $requestData2 = verificar_resultado($resultado2);
+  $response ['queriesInsert2'] = $requestData2;
   
-  #$query2 = "insert into dataSet values ($idJob, '$nameDocument', NOW(), NOW(), $idUSer, '$kind', $idJob)";
-  $resultado = mysqli_query($conexion, $query);
-  #$resultado2 = mysqli_query($conexion, $query2);
-  $requestData = verificar_resultado($resultado);
 
-  #$response ['queriesInsert'] = $requestData;
+
+  $resultado = mysqli_query($conexion, $query);
+  $requestData = verificar_resultado($resultado);
+  $response ['queriesInsert1'] = $requestData;
+
+  
+
 
   //movemos el archivo al path de la licitacion...
   
