@@ -1,8 +1,8 @@
-# coding=utf-8
 import urllib
+from bs4 import BeautifulSoup
 import re
-import urlparse
-from urlparse import parse_qs
+import urllib.parse as urlparse
+from urllib.parse import parse_qs
 import sys  
 import mechanize
 import time
@@ -51,7 +51,6 @@ with open(mutationFile) as bigfile:
         smallfile.write(line)
     if smallfile:
         smallfile.close()
-
 
 #envia uno a uno los job 
 #es posible que el servidor del sdm detecta trabajo multiple
