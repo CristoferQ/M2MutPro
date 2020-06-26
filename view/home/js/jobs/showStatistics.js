@@ -12,6 +12,9 @@ $(document).ready(function() {
         user,job
 			}
 		}).done( function( info ){
+    $("#continue").on("click", function(){
+      location.href="../predictiveModelsForm/?user="+user+"&job="+job
+    })
     var nameFile = "../../../jobs/"+user+"/"+job+"/results/statistics.json";
           readTextFile(nameFile, function(text){
             var data = JSON.parse(text);
