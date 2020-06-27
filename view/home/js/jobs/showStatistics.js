@@ -5,6 +5,7 @@ $(document).ready(function() {
   function loadData(){
     var user = getQuerystring("user");
     var job = getQuerystring("job");
+    var option = getQuerystring("opc");
     $.ajax({
 			method:"GET",
 			url: "../php/jobs/statisticsCsv.php",
@@ -13,7 +14,7 @@ $(document).ready(function() {
 			}
 		}).done( function( info ){
     $("#continue").on("click", function(){
-      location.href="../predictiveModelsForm/?user="+user+"&job="+job
+      location.href="../predictiveModelsForm/?user="+user+"&job="+job+"&opc="+option
     })
     var nameFile = "../../../jobs/"+user+"/"+job+"/results/statistics.json";
           readTextFile(nameFile, function(text){

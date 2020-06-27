@@ -56,13 +56,15 @@ $(document).ready(function() {
       var pdb_code = $("#initNewJob #pdb_code").val();
       var nameJob = $("#initNewJob #nameJob").val();
       var descJob = $("#initNewJob #descJob").val();
+      var option = $("#initNewJob #option").val();
       $.ajax({
         method: "POST",
         url: "../php/jobs/addData.php",
         data: {
           "pdb_code"   : pdb_code,
           "nameJob"   : nameJob,
-          "descJob"   : descJob
+          "descJob"   : descJob,
+          "option"    : option
         }
       }).done(function(info){
         $('#loading').hide();
@@ -81,8 +83,9 @@ $(document).ready(function() {
               var message = "Correcto";
               $("#success_text").html(message);
               $('#okResponse').show();
-              var ruta = "location.href=\"../checkJob/?user="+response.user+"&job="+response.job+"\"";
+              var ruta = "location.href=\"../checkJob/?user="+response.user+"&job="+response.job+"&opc="+response.option+"\"";
               setTimeout(ruta, 3000);
+              
             }
             else if(data.evaluateCsv == 1){
               var message = "Se ha producido un error al evaluar el csv";

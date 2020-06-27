@@ -50,6 +50,7 @@ var ignore = function(){
 	$("#ignore").on("click", function(){
     var user = getQuerystring("user");
     var job = getQuerystring("job");
+    var option = getQuerystring("opc");
     var opc = 0
 		$.ajax({
 			method:"GET",
@@ -62,7 +63,7 @@ var ignore = function(){
       var message = "Ignore correcto";
       $("#success_text").html(message);
       $('#okResponse').show();
-      var ruta = "location.href=\"../jobStatistics/?user="+user+"&job="+job+"\"";
+      var ruta = "location.href=\"../jobStatistics/?user="+user+"&job="+job+"&opc="+option+"\"";
       setTimeout(ruta, 3000);
 		});
 	});
@@ -72,6 +73,7 @@ var filter = function(){
 	$("#filter").on("click", function(){
     var user = getQuerystring("user");
     var job = getQuerystring("job");
+    var option = getQuerystring("opc");
     var opc = 1
 		$.ajax({
 			method:"GET",
@@ -84,7 +86,7 @@ var filter = function(){
       var message = "Filter correcto";
       $("#success_text").html(message);
       $('#okResponse').show();
-      var ruta = "location.href=\"../jobStatistics/?user="+user+"&job="+job+"\"";
+      var ruta = "location.href=\"../jobStatistics/?user="+user+"&job="+job+"&opc="+option+"\"";
       setTimeout(ruta, 3000);
 		});
 	});

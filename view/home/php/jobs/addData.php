@@ -10,11 +10,13 @@
   $pdb_code = $_REQUEST['pdb_code'];
   $nameJob = $_REQUEST['nameJob'];
   $descJob = $_REQUEST['descJob'];
+  $option = $_REQUEST['option'];
 
   #creamos un directorio para almacenar los resultados
   $idJob = time();#sera el id del job...
   $response ['job'] = $idJob; #declaracion de arreglo asociativo
   $response ['user'] = $idUSer;
+  $response ['option'] = $option;
   
   #obtenemos el nombre del archivo de entrada...
   $pathData = "/var/www/html/M2MutPro/jobs/tmp/".$idUSer."_documentQueue1.txt";
@@ -33,7 +35,7 @@
   #movemos el archivo...
   #hacemos la insercion a la base de datos...
   
-  $query2 = "insert into dataSet values ($idJob, '$nameDocument', 'tipoA', NOW(), NOW())";
+  $query2 = "insert into dataSet values ($idJob, '$nameDocument', $option, NOW(), NOW())";
   $query = "insert into job values ($idJob, '$nameJob', '$descJob', 'Created', NOW(), NOW(), $idUSer, '$idJob')";
   $resultado2 = mysqli_query($conexion, $query2);
   $requestData2 = verificar_resultado($resultado2);

@@ -125,38 +125,88 @@
             <div class="clearfix"></div>
 
             
-            <form id="initNewJob" method="post" class="form-horizontal form-label-left">
+            <form id="predictiveModels" method="post" class="form-horizontal form-label-left">
+    
               <div class="form-group">
-                      <label class="col-sm-5 control-label">Pdb Code*</label>
-                       <div class="col-sm-5">
-                           <input type="text" class="form-control" id="pdb_code" name="pdb_code" autocomplete="off"/>
-                       </div>
-                   </div>
-
-
-              <div class="form-group">
-                 <label class="col-sm-5 control-label">Name of job*</label>
-                  <div class="col-sm-5">
-                      <input type="text" class="form-control" id="nameJob" name="nameJob" autocomplete="off"/>
-                  </div>
-              </div>
-
-              <div class="form-group">
-                 <label class="col-sm-5 control-label">Description of job*</label>
-                  <div class="col-sm-5">
-                      <input type="text" class="form-control" id="descJob" name="descJob" autocomplete="off"/>
-                  </div>
-              </div>
-              
-              <div class="form-group">
-                <label class="col-sm-5 control-label">Select the type of task*</label>
+                <label class="col-sm-5 control-label">Validation type*</label>
                  <div class="col-sm-5">
-                  <select name="select" id="select">
-                    <option id="Prediction" value="0">Prediction</option> 
-                    <option id="Classification" value="1">Classification</option>
+                  <select name="validation" id="validation">
+                    <option value="0">Divide between training and validation</option> 
+                    <option value="1">Use only training and apply cross validation</option>
+                    <option value="2">Combine both options</option>
                   </select>
                  </div>
              </div>
+             <div class="clearfix"></div>
+             <div class="form-group" id="val1" name="val1">
+              <label class="col-sm-5 control-label">% de entrenamiento</label>
+                       <div class="col-sm-5">
+                           <input type="text" class="form-control" autocomplete="off"/>
+                       </div>
+             </div>
+             <div class="form-group" id="val2" name="val2">
+              <label class="col-sm-5 control-label">% de validacion</label>
+                       <div class="col-sm-5">
+                           <input type="text" class="form-control" autocomplete="off"/>
+                       </div>
+             </div>
+             <div class="form-group" id="val3" name="val3">
+              <label class="col-sm-5 control-label">Valor de K</label>
+                       <div class="col-sm-5">
+                           <input type="text" class="form-control" autocomplete="off"/>
+                       </div>
+             </div>
+             <div class="form-group">
+              <label class="col-sm-5 control-label">Select the predictive model to use*</label>
+               <div class="col-sm-5">
+                <select name="models" id="models">
+                  <option value="0">Supervised learning algorithms</option> 
+                  <option value="1">Algorithm and hyperparameter exploration</option>
+                  <option value="2">Metamodels</option>
+                  <option value="3">Performance maximization</option>
+                </select>
+               </div>
+           </div>
+           <div class="clearfix"></div>
+           <div class="form-group" name="p_algorithm" id="p_algorithm">
+              <label class="col-sm-5 control-label">Select the prediction algorithm*</label>
+               <div class="col-sm-5">
+                <select>
+                  <option value="0">AdaBoostRegressor</option> 
+                  <option value="1">BaggingRegressor</option>
+                  <option value="2">DecisionTree</option>
+                  <option value="3">GradientBoostingRegressor</option>
+                  <option value="4">KNeighborsRegressor</option>
+                  <option value="5">MLPRegressor</option>
+                  <option value="6">NuSVR</option>
+                  <option value="7">RandomForestRegressor</option>
+                  <option value="8">SVR</option>
+                </select>
+               </div> 
+           </div>
+           <div class="clearfix"></div>
+           <div class="form-group" name="c_algorithm" id="c_algorithm">
+            <label class="col-sm-5 control-label">Select the classification algorithm*</label>
+             <div class="col-sm-5">
+              <select>
+                <option value="0">AdaBoostClassifier</option> 
+                <option value="1">BaggingClassifier</option>
+                <option value="2">BernoulliNB</option>
+                <option value="3">DecisionTree</option>
+                <option value="4">GaussianNB</option>
+                <option value="5">GradientBoostingClassifier</option>
+                <option value="6">KNeighborsClassifier</option>
+                <option value="7">MLPClassifier</option>
+                <option value="8">NuSVC</option>
+                <option value="9">RandomForestClassifier</option>
+                <option value="10">SVC</option>
+              </select>
+             </div> 
+         </div>
+
+         
+
+
              
              
             
@@ -256,6 +306,6 @@
     <script src="../../build/js/custom.min.js"></script>
     <script src="../../vendors/bootstrap-validator/bootstrapValidator.min.js"></script>
     
-    <script src="../js/jobs/createJob.js"></script>
+    <script src="../js/jobs/predictiveModelsForm.js"></script>
   </body>
 </html>
