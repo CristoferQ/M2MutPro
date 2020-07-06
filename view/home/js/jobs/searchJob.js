@@ -1,63 +1,48 @@
-$(document).ready(function() {
-
-  $('#queryJob').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-
-            jobID: {
-                validators: {
-                    notEmpty: {
-                        message: 'The jobID is required'
-                    }
-                }
-            }
-        }
-    }).on('success.form.bv', function(e) {
-      e.preventDefault();
-      $('#loading').show();
-      var jobID = $("#queryJob #jobID").val();
-
-      $.ajax({
-        method: "POST",
-        url: "../php/jobs/searchJob.php",
-        data: {
-          "jobID"   : jobID
-
-        }
-      }).done( function( info ){
-        var response = JSON.parse(info);
-        $('#loading').hide();
-
-        console.log(response.res);
-
-        if (response.res== "1" || response.res== 1){
-          $(".messageInit").html( response.msg);
-          $('#initResponse').show();
-          setTimeout("location.href=''", 5000);
-        }else{
-          if (response.res== "2" || response.res== 2){
-            $(".messageProcessing").html( response.msg);
-            $('#processingResponse').show();
-            setTimeout("location.href=''", 5000);
-          }else{
-            if (response.res== "0" || response.res== 0){
-              $(".messageError").html( response.msg);
-              $('#notExistResponse').show();
-              setTimeout("location.href=''", 5000);
-            }else{
-
-              if (response.kind == "PREDICTION"){
-                location.href="../resultsPred/?job="+jobID
-              }else{
-                location.href="../resultsClass/?job="+jobID
-              }
-            }
-          }
-        }
-      });
-  });
+$(window).on('load', function() {
+	listar();
 });
+
+$.fn.DataTable.ext.pager.numbers_length = 5;
+
+var listar = function(){
+	var t = $('#jobs').DataTable({
+		"responsive": true,
+		"destroy":true,
+		"order": [[ 5, "desc" ]],
+		"ajax":{
+			"method":"POST",
+			"url": "../php/jobs/showJobs.php"
+		},
+		"columns":[
+			{"data":"idjob"},
+			{"data":"nameJob"},
+			{"data":"descriptionJob"},
+			{"data":"statusJob"},
+			{"data":"createdJob"},
+			{"data":"modifiedJob"},
+			{"defaultContent": "<button id='b_results' type='button' class='btn btn-success'><i class='fa fa-file'></i></button>"}
+		]
+  });
+  getIDForDetail("#jobs tbody", t);
+}
+
+var getIDForDetail = function(tbody, table){
+	$(tbody).on("click", "#b_results", function(){
+		var data = table.row( $(this).parents("tr") ).data();
+		var idjob = data.idjob;
+
+		var statusJob = data.statusJob;
+    
+		if (statusJob != "ERROR" && statusJob != "START" &&  statusJob != "PROCESING"){
+        //location.href="../characteristic/responseCorrelation.php?job="+idjob;
+        location.href="../?job="+idjob;
+		}else{
+			$('#errorResponse').show();
+			setTimeout("location.href=''", 5000);
+		}
+	});
+}
+
+
+
+

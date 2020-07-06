@@ -124,26 +124,25 @@
 
             <div class="clearfix"></div>
 
-            
-            <form id="queryJob" method="post" class="form-horizontal form-label-left">
-              <div class="form-group">
-                      <label class="col-sm-5 control-label">Id Job</label>
-                       <div class="col-sm-5">
-                           <input type="text" class="form-control" id="pdb_code" name="pdb_code" autocomplete="off"/>
-                       </div>
-                   </div>
+  
 
-
-            
-
-              <div class="ln_solid"></div>
-
-              <div class="form-group">
-                  <div class="col-sm-5 col-sm-offset-3">
-                    <button type="submit" id="processJob" class="btn btn-primary">Search Job</button>
-                  </div>
-              </div>
-            </form>
+                  <table id="jobs" class="table table-striped table-bordered display " style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID Job</th>
+                            <th>Name</th>
+                            <th>Description</th>  
+                            <th>Status</th>     
+                            <th>Created</th>    
+                            <th>Modified</th>    
+                            <th>View Results</th>    
+                        </tr>
+                    </thead>
+    
+                    <tbody>  
+                    </tbody>
+                </table>
+          
 
 
 
@@ -230,7 +229,23 @@
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
     <script src="../../vendors/bootstrap-validator/bootstrapValidator.min.js"></script>
-    
-    <script src="../js/jobs/createJob.js"></script>
+    <!-- Datatables -->
+    <script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../../vendors/pdfmake/build/vfs_fonts.js"></script>
+
+    <script src="../js/jobs/searchJob.js"></script>
   </body>
 </html>
