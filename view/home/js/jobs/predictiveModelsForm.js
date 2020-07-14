@@ -2280,18 +2280,19 @@ function changeItemize(){
 function loadData(){
   var user = getQuerystring("user");
   var job = getQuerystring("job");
-  
+  var opc = getQuerystring("opc");
   $.ajax({
     method: "POST",
-    url: "../php/",
+    url: "../php/jobs/predictiveModelsForm.php",
     data: {
+      user,job,opc
     }
   }).done(function(info){
-    var message = "Correcto";
+    var message = "The job with id "+job+" has been initialized correctly, to follow the status of this job go to 'My Jobs'";
     $("#success_text").html(message);
     $('#okResponse').show();
-    var ruta = "location.href=\"../index\"";
-    setTimeout(ruta, 3000);  
+    var ruta = "location.href=\"../index.html\"";
+    setTimeout(ruta, 6000);  
     });
   
 

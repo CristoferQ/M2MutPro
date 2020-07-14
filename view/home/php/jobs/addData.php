@@ -34,8 +34,12 @@
 
   #movemos el archivo...
   #hacemos la insercion a la base de datos...
+  if($option == 0){
+    $query2 = "insert into dataSet values ($idJob, '$nameDocument', 'Prediction', NOW(), NOW())";
+  }else{
+    $query2 = "insert into dataSet values ($idJob, '$nameDocument', 'Clasification', NOW(), NOW())";
+  }
   
-  $query2 = "insert into dataSet values ($idJob, '$nameDocument', $option, NOW(), NOW())";
   $query = "insert into job values ($idJob, '$nameJob', '$descJob', 'Created', NOW(), NOW(), $idUSer, '$idJob')";
   $resultado2 = mysqli_query($conexion, $query2);
   $requestData2 = verificar_resultado($resultado2);

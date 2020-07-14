@@ -20,7 +20,7 @@ var listar = function(){
 			{"data":"statusJob"},
 			{"data":"createdJob"},
 			{"data":"modifiedJob"},
-			{"defaultContent": "<button id='b_results' type='button' class='btn btn-success'><i class='fa fa-file'></i></button>"}
+			{"defaultContent": "<button id='b_results' type='button' class='btn btn-success' data-toggle='modal' data-target='.bs-example-modal-sm'><i class='fa fa-file'></i></button>"}
 		]
   });
   getIDForDetail("#jobs tbody", t);
@@ -33,12 +33,14 @@ var getIDForDetail = function(tbody, table){
 
 		var statusJob = data.statusJob;
     
-		if (statusJob != "ERROR" && statusJob != "START" &&  statusJob != "PROCESING"){
-        //location.href="../characteristic/responseCorrelation.php?job="+idjob;
-        location.href="../?job="+idjob;
+		if (statusJob != "Created" && statusJob != "START" &&  statusJob != "PROCESING"){
+		//location.href="../characteristic/responseCorrelation.php?job="+idjob;
+		location.href="../index.html?job="+idjob;
 		}else{
+			var message = "The job is not ready";
+    		$("#error_text").html(message);
 			$('#errorResponse').show();
-			setTimeout("location.href=''", 5000);
+			//setTimeout("location.href=''", 5000);
 		}
 	});
 }
