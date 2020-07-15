@@ -7,7 +7,7 @@
     #$iduser = $_SESSION['idUser'];
     $iduser = 1;
     
-	$query = "select * from job";
+	$query = "select * from job join dataSet on (dataSet.iddataSet=job.dataSet_iddataSet) where user_iduser=1;";
 	$resultado = mysqli_query($conexion, $query);
 
 	if (!$resultado){

@@ -60,10 +60,12 @@ function SmartWizard(target, options) {
 
         $($this.buttons.next).click(function() {
             $this.goForward();
+            window.scrollTo(0, 0);
             return false;
         });
         $($this.buttons.previous).click(function() {
             $this.goBackward();
+            window.scrollTo(0, 0);
             return false;
         });
         $($this.buttons.finish).click(function() {

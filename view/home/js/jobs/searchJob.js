@@ -17,6 +17,7 @@ var listar = function(){
 			{"data":"idjob"},
 			{"data":"nameJob"},
 			{"data":"descriptionJob"},
+			{"data":"typeDataSet"},
 			{"data":"statusJob"},
 			{"data":"createdJob"},
 			{"data":"modifiedJob"},
@@ -34,11 +35,17 @@ var getIDForDetail = function(tbody, table){
 		var statusJob = data.statusJob;
     
 		if (statusJob != "Created" && statusJob != "START" &&  statusJob != "PROCESING"){
-		//location.href="../characteristic/responseCorrelation.php?job="+idjob;
-		location.href="../results?job="+idjob;
+			if (data.typeDataSet == 'Prediction'){
+				opc = 0;
+				location.href="../results?job="+idjob+"&opc="+opc;
+			}else{
+				opc = 1;
+				location.href="../results?job="+idjob+"&opc="+opc;
+			}
+		
 		$('#errorResponse').hide();
 		}else{
-			var message = "The job is not ready";
+			var message = "The job is not finished yet";
     		$("#error_text").html(message);
 			$('#errorResponse').show();
 			//setTimeout("location.href=''", 5000);
