@@ -2278,23 +2278,25 @@ function changeItemize(){
   }
 }
 function loadData(){
+  $("#createJob").on("click", function(){
   var user = getQuerystring("user");
   var job = getQuerystring("job");
   var opc = getQuerystring("opc");
   $.ajax({
-    method: "POST",
+    method: "GET",
     url: "../php/jobs/predictiveModelsForm.php",
     data: {
       user,job,opc
     }
   }).done(function(info){
+    var json_info = JSON.parse( info );
     var message = "The job with id "+job+" has been initialized correctly, to follow the status of this job go to 'My Jobs'";
     $("#success_text").html(message);
     $('#okResponse').show();
     var ruta = "location.href=\"../index.html\"";
     setTimeout(ruta, 6000);  
     });
-  
+  });
 
 }
 function readTextFile(file, callback) {

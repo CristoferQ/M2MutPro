@@ -35,7 +35,8 @@ var getIDForDetail = function(tbody, table){
     
 		if (statusJob != "Created" && statusJob != "START" &&  statusJob != "PROCESING"){
 		//location.href="../characteristic/responseCorrelation.php?job="+idjob;
-		location.href="../index.html?job="+idjob;
+		location.href="../results?job="+idjob;
+		$('#errorResponse').hide();
 		}else{
 			var message = "The job is not ready";
     		$("#error_text").html(message);
