@@ -36,11 +36,9 @@ var getIDForDetail = function(tbody, table){
     
 		if (statusJob != "Created" && statusJob != "START" &&  statusJob != "PROCESING"){
 			if (data.typeDataSet == 'Prediction'){
-				opc = 0;
-				location.href="../results?job="+idjob+"&opc="+opc;
+				location.href="../results?job="+idjob;
 			}else{
-				opc = 1;
-				location.href="../results?job="+idjob+"&opc="+opc;
+				location.href="../results?job="+idjob;
 			}
 		
 		$('#errorResponse').hide();
