@@ -1,4 +1,3 @@
-import json
 from modules.services import sdm_service
 
 class handler_dataset(object):
