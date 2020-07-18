@@ -11,12 +11,14 @@ $(document).ready(function() {
             data:{
                 user,job
             }
-		}).done( function( data ){            
-            console.log(data[0]["idjob"]);
-        $("#idJob").html(data["idjob"]);
-        $("#nameJob").html(data["nameJob"]);
-        $("#descJob").html(data["descriptionJob"]);
-        $("#typeOfTask").html(data["typeDataSet"]);
+		}).done( function( info ){            
+        $("#idJob").html(job);
+        var data = JSON.parse(info);
+        $("#nameJob").html(data.nameJob);
+        $("#descJob").html(data.descriptionJob);
+        $("#typeOfTask").html(data.typeDataSet);
+        $("#protein").html(data.pdbCode);
+        $("#numberOfExamples").html(data.numberOfExamples);
 
         var nameFile = "../../../jobs/"+user+"/"+job+"/results/statistics.json";
           readTextFile(nameFile, function(text){
@@ -25,8 +27,8 @@ $(document).ready(function() {
             //tabla fija
             var data = [
               {
-                x: data.count1.counter_x,
-                y: data.count1.counter_y,
+                x: data,
+                y: data,
                 type: 'bar'
               }
             ];

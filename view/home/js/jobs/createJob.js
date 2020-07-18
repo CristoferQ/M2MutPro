@@ -64,7 +64,7 @@ $(document).ready(function() {
           "pdb_code"   : pdb_code,
           "nameJob"   : nameJob,
           "descJob"   : descJob,
-          "option"    : option
+          "option"    : option          
         }
       }).done(function(info){
         $('#loading').hide();

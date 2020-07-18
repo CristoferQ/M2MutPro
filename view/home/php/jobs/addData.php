@@ -40,7 +40,7 @@
     $query2 = "insert into dataSet values ($idJob, '$nameDocument', 'Clasification', NOW(), NOW())";
   }
   
-  $query = "insert into job values ($idJob, '$nameJob', '$descJob', 'Created', NOW(), NOW(), $idUSer, '$idJob')";
+  $query = "insert into job values ($idJob, '$nameJob', '$descJob', 'Created', NOW(), NOW(), $idUSer, '$idJob', '$pdb_code')";
   $resultado2 = mysqli_query($conexion, $query2);
   $requestData2 = verificar_resultado($resultado2);
   $response ['queriesInsert2'] = $requestData2;
