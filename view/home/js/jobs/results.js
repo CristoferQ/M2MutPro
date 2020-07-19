@@ -21,10 +21,9 @@ $(document).ready(function() {
         $("#numberOfExamples").html(data.numberOfExamples);
 
         var nameFile = "../../../jobs/"+user+"/"+job+"/results/statistics.json";
-          readTextFile(nameFile, function(text){
+          readTextFile(nameFile, function(text){ //grafico de torta de la respuesta
             var data = JSON.parse(text);
             console.log(data);  
-            //tabla fija
             var data = [
               {
                 x: data,

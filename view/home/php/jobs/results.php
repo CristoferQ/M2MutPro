@@ -28,5 +28,14 @@
     $response ['numberOfExamples'] = $output[0]-1;
     echo json_encode($response);
 	mysqli_free_result($resultado);
-	mysqli_close($conexion);
+  mysqli_close($conexion);
+  
+  $pathResults = "/var/www/html/M2MutPro/jobs/$idUSer/$idJob/results/";
+  $option = 4;
+  $command = "python3 /var/www/html/M2MutPro/model/bin/launcher.py $option $pathResults";
+  
+  $response['command'] = $command;
+  exec($command);
+  
+  echo json_encode($response);
 ?>

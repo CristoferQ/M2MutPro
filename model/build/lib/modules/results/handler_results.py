@@ -6,6 +6,6 @@ class handler_results(object):
         self.pathResponse = pathResponse
         preparing_results = results.results(self.pathResponse)
         preparing_results.responseGraph()
-        preparing_results.responseStatistics()
+        preparing_results.WT_RSA()
         preparing_results.json()
         

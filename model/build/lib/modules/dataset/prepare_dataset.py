@@ -24,15 +24,6 @@ class prepare_dataset(object):
                 if (lista['residuo_csv'] == dato['wt'] and lista['posi'] == (dato['pos'])):
                     if (lista['residuo_pdb'] != str("-")):
                         self.dataset.loc[self.dataset['wt'] == dato['wt'], ['wt']] = lista['residuo_pdb']
-                        
-
-                        
-                    
-        
-        
-        
-        print(dataset_errores)
-        print(self.dataset)
         self.dataset.to_csv(self.path_download+"clean.csv",index = False)
     def ignore(self):
         dataset_errores = pd.read_csv(self.path_download+"errors.csv")

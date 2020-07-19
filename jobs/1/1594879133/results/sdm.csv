@@ -1,4 +1,4 @@
-AAWT,Pos,AAMT,WT_SSE,WT_RSA,WT_DEPTH,WT_SS,WT_SN,WT_SO,MT_SSE,MT_RSA ,MT_DEPTH,MT_SS,MT_SN,MT_SO,Predicted_DDG,Class
+AAWT,Pos,AAMT,WT_SSE,WT_RSA,WT_DEPTH,WT_SS,WT_SN,WT_SO,MT_SSE,MT_RSA,MT_DEPTH,MT_SS,MT_SN,MT_SO,Predicted_DDG,Class
 A,9,S,H ,0,7.9,False ,False ,False ,H ,0,7.7,True ,False ,True ,-1.99,NEUTRAL
 E,7,Q,H ,40.5,3.6,True ,True ,False ,H ,63.7,3.6,True ,False ,False ,-0.5,NEUTRAL
 E,7,Q,H ,40.5,3.6,True ,True ,False ,H ,63.7,3.6,True ,False ,False ,-0.5,NEUTRAL

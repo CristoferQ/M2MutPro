@@ -7,7 +7,7 @@ class results(object):
     def __init__(self, pathResponse):
         self.pathResponse = pathResponse
         self.sdm_dataset = pd.read_csv(self.pathResponse+"sdm.csv")
-        self.data = {"responseGraph":{}, "responseStatistics":{}, "count3":{}}
+        self.data = {"responseGraph":{}, "responseStatistics":{}, "WT_DEPTH":{}, "MT_RSA":{}, "MT_DEPTH":{}, "Predicted_DDG":{}}
     def responseGraph(self):
         residuesValidsDic = {'NEUTRAL': 0, 'STABILIZING': 0, 'DESTABILIZING': 0}
         for element in self.sdm_dataset['Class']: #elementos de la columna 
@@ -19,7 +19,7 @@ class results(object):
         self.data['responseGraph'].update({"counter_x":keys})
         self.data['responseGraph'].update({"counter_y":values})
 
-    def responseStatistics(self):
+    def WT_RSA(self):
         statistics = {'Minimum': 0, 'Maximum': 0, 'Mean': 0, 'Standard deviation': 0}
         attributes = ['WT_RSA','WT_DEPTH','MT_RSA','MT_DEPTH','Predicted_DDG']
         for element in attributes:
@@ -31,7 +31,7 @@ class results(object):
             statistics = {'Minimum': 0, 'Maximum': 0, 'Mean': 0, 'Standard deviation': 0}
         print(self.data['responseStatistics'])
 
-    #ESTO VIENE DE ANTES            
+            
     def count5(self):
         count = list(self.clean_dataset['pos'])
         self.data['count5'].update({"counter_x":count})
