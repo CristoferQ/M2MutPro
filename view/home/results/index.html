@@ -310,28 +310,6 @@
                     </div>
                   </div>
                 </div>  
-                <div class="col-md-12 col-sm-12">
-                  <div class="x_panel">
-                    <div class="x_title">
-                      <h2><i class="fa fa-align-left"></i> Response graph</h2>
-                      <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                      </ul>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                      <div class="clearfix"></div>
-                      <div class="col-md-2 col-sm-2">
-                        <h4>Description: </h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eaque, rerum adipisci hic maiores ipsam unde quas quod animi sunt officia officiis velit eveniet accusantium dicta iste vel. Cupiditate, quibusdam. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eaque, rerum adipisci hic maiores ipsam unde quas quod.</p>
-                      </div>
-                      <div class="col-md-10 col-sm-10">
-                        <div id="count1"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <br>
                 <br>
               </div>
@@ -339,7 +317,7 @@
                 <div class="col-md-12 col-sm-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2><i class="fa fa-align-left"></i> Statistical summary of attributes</h2>
+                      <h2><i class="fa fa-align-left"></i> Statistical summary of continuous attributes</h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -353,41 +331,47 @@
                           <table class="table table-striped jambo_table">
                             <thead>
                                 <th class="column-title">Attribute name</th>
-                                <th class="column-title">Estadistico1</th>
-                                <th class="column-title">Estadistico2</th>
-                                <th class="column-title">Estadistico3</th>
+                                <th class="column-title">Minimum</th>
+                                <th class="column-title">Maximum</th>
+                                <th class="column-title">Mean</th>
+                                <th class="column-title">Standard deviation</th>
                             </thead>
             
                             <tbody>
                               <tr class="even pointer">
                                 <td>WT_RSA</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
+                                <td id="WT_RSA_MIN"></td>
+                                <td id="WT_RSA_MAX"></td>
+                                <td id="WT_RSA_MEAN"></td>
+                                <td id="WT_RSA_STD"></td>
                               </tr>
                               <tr class="odd pointer">
                                 <td>WT_DEPTH</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
+                                <td id="WT_DEPTH_MIN"></td>
+                                <td id="WT_DEPTH_MAX"></td>
+                                <td id="WT_DEPTH_MEAN"></td>
+                                <td id="WT_DEPTH_STD"></td>
                               </tr>
                               <tr class="even pointer">
                                 <td>MT_RSA</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
+                                <td id="MT_RSA_MIN"></td>
+                                <td id="MT_RSA_MAX"></td>
+                                <td id="MT_RSA_MEAN"></td>
+                                <td id="MT_RSA_STD"></td>
                               </tr>
                               <tr class="odd pointer">
                                 <td>MT_DEPTH</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
+                                <td id="MT_DEPTH_MIN"></td>
+                                <td id="MT_DEPTH_MAX"></td>
+                                <td id="MT_DEPTH_MEAN"></td>
+                                <td id="MT_DEPTH_STD"></td>
                               </tr>
                               <tr class="even pointer">
                                 <td>Predicted_DDG</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
+                                <td id="Predicted_DDG_MIN"></td>
+                                <td id="Predicted_DDG_MAX"></td>
+                                <td id="Predicted_DDG_MEAN"></td>
+                                <td id="Predicted_DDG_STD"></td>
                               </tr>
                             </tbody>
                           </table>
@@ -399,7 +383,7 @@
                 <div class="col-md-12 col-sm-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2><i class="fa fa-align-left"></i> Attribute chart</h2>
+                      <h2><i class="fa fa-align-left"></i> Continuous attributes chart</h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -411,21 +395,57 @@
                       <div class="col-md-2 col-sm-2">
                         <h4>Description: </h4>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eaque, rerum adipisci hic maiores ipsam unde quas quod animi sunt officia officiis velit eveniet accusantium dicta iste vel. Cupiditate, quibusdam. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eaque, rerum adipisci hic maiores ipsam unde quas quod.</p>
-                        <select name="select" id="select">
+                        <select id="continuousAttributes">
                           <option selected>Select an option</option> 
-                          <option id="0" value="0">WT_RSA</option> 
-                          <option id="1" value="1">WT_DEPTH</option>
-                          <option id="2" value="2">MT_RSA</option>
-                          <option id="3" value="3">MT_DEPTH</option>
-                          <option id="4" value="4">Predicted_DDG</option>
+                          <option id="0" value="WT_RSA">WT_RSA</option> 
+                          <option id="1" value="WT_DEPTH">WT_DEPTH</option>
+                          <option id="2" value="MT_RSA">MT_RSA</option>
+                          <option id="3" value="MT_DEPTH">MT_DEPTH</option>
+                          <option id="4" value="Predicted_DDG">Predicted_DDG</option>
                         </select>
                       </div>
                       <div class="col-md-10 col-sm-10">
-                        <div id="count6"></div>
+                        <div id="count1"></div>
                       </div>
                     </div>
                   </div>
                 </div>   
+                <div class="col-md-12 col-sm-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2><i class="fa fa-align-left"></i> Categorical attributes chart</h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <div class="clearfix"></div>
+                      <div class="col-md-2 col-sm-2">
+                        <h4>Description: </h4>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eaque, rerum adipisci hic maiores ipsam unde quas quod animi sunt officia officiis velit eveniet accusantium dicta iste vel. Cupiditate, quibusdam. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eaque, rerum adipisci hic maiores ipsam unde quas quod.</p>
+                        <select id="categoricalAttributes">
+                          <option selected>Select an option</option> 
+                          <option id="0" value="0">WT_SSE</option> 
+                          <option id="1" value="1">WT_SS</option>
+                          <option id="2" value="2">WT_SN</option>
+                          <option id="3" value="3">WT_SO</option>
+                          <option id="4" value="4">MT_SSE</option>
+                          <option id="5" value="5">MT_SS</option>
+                          <option id="6" value="6">MT_SN</option>
+                          <option id="7" value="7">MT_SO</option>
+                          <option id="8" value="8">Class</option>
+                        </select>
+                      </div>
+                      <div class="col-md-10 col-sm-10">
+                        <div id="count2"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>   
+
+
               </div>
               <div id="step-3" style="display: none;">
                 <h2 class="StepTitle">Step 3 Content</h2>
