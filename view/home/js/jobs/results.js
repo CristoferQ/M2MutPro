@@ -63,7 +63,27 @@ $(document).ready(function() {
         Plotly.newPlot('count1', data, layout);
         });
       });
+
+      $('#categoricalAttributes').on('change', function() {
+        readTextFile(nameFile, function(text){
+          var valor = $("#categoricalAttributes").val();
+          var texto = $("#categoricalAttributes option:selected").text();
+          var data = JSON.parse(text);
+          var data = [{
+            textposition: 'inside',
+            values: Object.values(data.categoricalAttributes[valor]),
+            labels: Object.keys(data.categoricalAttributes[valor]),
+            type: 'pie',
+          }];
+          var layout = {
+            title: texto,
+          };
+          Plotly.newPlot('count2', data, layout);
+          });
+        });
   });
+
+  
   
   
 

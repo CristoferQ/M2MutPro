@@ -7,5 +7,6 @@ class handler_results(object):
         preparing_results = results.results(self.pathResponse)
         preparing_results.responseStatistics()
         preparing_results.continuousAttributes()
+        preparing_results.categoricalAttributes()
         preparing_results.json()
         

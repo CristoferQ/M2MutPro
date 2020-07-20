@@ -7,7 +7,7 @@ class results(object):
     def __init__(self, pathResponse):
         self.pathResponse = pathResponse
         self.sdm_dataset = pd.read_csv(self.pathResponse+"sdm.csv")
-        self.data = {"responseGraph":{}, "responseStatistics":{}, "continuousAttributes":{}, "categoricalAttributes":{}}
+        self.data = {"responseGraph":{}, "responseStatistics":{}, "continuousAttributes":{}, "categoricalAttributes":{'WT_SSE':{},'WT_SS':{},'WT_SN':{},'WT_SO':{},'MT_SSE':{},'MT_SS':{},'MT_SN':{},'MT_SO':{},'Class':{}}}
     
     def responseStatistics(self):
         statistics = {'Minimum': 0, 'Maximum': 0, 'Mean': 0, 'Standard deviation': 0}
@@ -28,16 +28,16 @@ class results(object):
         #print(self.data['continuousAttributes'])
 
     def categoricalAttributes (self):#pie
-        attributes = ['WT_RSA','WT_DEPTH','MT_RSA','MT_DEPTH','Predicted_DDG']
-        for index, fila in self.clean_dataset.iterrows():
-            residuesValidsDic[fila['wt']].update({fila['mt']:residuesValidsDic[fila['wt']].get(fila['mt'])+1})
-        keys = list(residuesValidsDic.keys())
-        values = []
-        for i in residuesValidsDic:
-            values.append(list(residuesValidsDic[i].values()))
-        
-        self.data['count6'].update({"counter_x":keys})
-        self.data['count6'].update({"counter_y":values})
+        attributes = ['WT_SSE','WT_SS','WT_SN','WT_SO','MT_SSE','MT_SS','MT_SN','MT_SO','Class']
+        for element in attributes:
+            values = list(self.sdm_dataset[element].value_counts().keys())
+            counts = self.sdm_dataset[element].value_counts().tolist()
+            k = 0
+            for i in values:
+                self.data['categoricalAttributes'][element].update({i:counts[k]})
+                k = k+1                
+            
+        #print(self.data['categoricalAttributes'])
         
     def json(self):
         with open(self.pathResponse+"results.json", 'w') as fp:
