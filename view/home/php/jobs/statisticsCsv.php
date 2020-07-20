@@ -3,6 +3,7 @@
   #recibimos los parametros...
   $idUSer = $_REQUEST['user'];
   $idJob = $_REQUEST['job'];
+  $opc = $_REQUEST['opc'];
 
   #creamos un directorio para almacenar los resultados
   $response ['job'] = $idJob; #declaracion de arreglo asociativo
@@ -13,7 +14,7 @@
   #hacemos la ejecucion del script para el algoritmo
   
   $option = 3;
-  $command = "python3 /var/www/html/M2MutPro/model/bin/launcher.py $option $pathResults";
+  $command = "python3 /var/www/html/M2MutPro/model/bin/launcher.py $option $pathResults $opc";
   
   $response['command'] = $command;
   #$output = [];

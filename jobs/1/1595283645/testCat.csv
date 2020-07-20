@@ -1,0 +1,11 @@
+chain,wt,pos,mt,response
+A,ASP,30,VAL,good
+A,ASP,532,VAL,good
+A,HIS,31,VAL,bad
+A,HIS,800,SER,good
+A,VAL,30,SER,good
+A,LYS,30,VAL,bad
+A,HIS,400,SER,bad
+A,VAL,30,SER,good
+A,VAL,30,VAL,bad
+A,VAL,30,VAL,bad

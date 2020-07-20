@@ -26,7 +26,8 @@ class launcher(object):
     elif (option == 3):#statistics_dataset
         h_dataset = handler_dataset.handler_dataset()
         pathResponse = sys.argv[2]
-        h_dataset.statistics_dataset(pathResponse)
+        opc = int(sys.argv[3])
+        h_dataset.statistics_dataset(pathResponse,opc)
     elif (option == 4):#results
         h_results = handler_results.handler_results()
         pathResponse = sys.argv[2]

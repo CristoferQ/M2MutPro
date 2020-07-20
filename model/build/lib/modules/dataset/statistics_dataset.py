@@ -3,10 +3,11 @@ import os
 import json
 
 class statistics_dataset(object):
-    def __init__(self, path_download):
+    def __init__(self, path_download, opc):
         self.path_download = path_download
         self.clean_dataset = pd.read_csv(self.path_download+"clean.csv")
-        self.data = {"count1":{}, "count2":{}, "count3":{}, "count4":{}, "count5":{}, "count6":{}}
+        self.data = {"count1":{}, "count2":{}, "count3":{}, "count4":{}, "count5":{}, "count6":{}, "count7":{}}
+        self.opc = opc
     def count1(self):
         residuesValidsDic = {'ALA': 0, 'LYS': 0, 'ARG': 0, 'HIS': 0, 'PHE': 0, 'THR': 0, 'PRO': 0, 'MET': 0, 'GLY': 0, 'ASN': 0, 'ASP': 0, 'GLN': 0, 'GLU': 0, 'SER': 0, 'TYR': 0, 'TRP': 0, 'VAL': 0, 'ILE': 0, 'LEU': 0, 'CYS': 0}
         for element in self.clean_dataset['wt']: #elementos de la columna 
@@ -77,6 +78,18 @@ class statistics_dataset(object):
         
         self.data['count6'].update({"counter_x":keys})
         self.data['count6'].update({"counter_y":values})
+
+    def count7(self):
+        if (self.opc == 0): #prediccion - continuo
+            count = list(self.clean_dataset['response'])
+            self.data['count7'].update({"counter_x":count})
+        else: #clasificacion - categorico
+            values = list(self.clean_dataset['response'].value_counts().keys())
+            counts = self.clean_dataset['response'].value_counts().tolist()
+            self.data['count7'].update({"counter_x":values})
+            self.data['count7'].update({"counter_y":counts})
+
+
         
     def json(self):
         with open(self.path_download+"statistics.json", 'w') as fp:

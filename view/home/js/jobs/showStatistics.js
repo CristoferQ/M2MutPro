@@ -10,9 +10,14 @@ $(document).ready(function() {
 			method:"GET",
 			url: "../php/jobs/statisticsCsv.php",
 			data: {
-        user,job
+        user,job,option
 			}
 		}).done( function( info ){
+      if (option == 0){ //prediccion continuo
+        $('#Count7Prediction').show();
+      }else{  //clasificacion categorico
+        $('#Count7Classification').show();
+      }
     $("#continue").on("click", function(){
       location.href="../predictiveModelsForm/?user="+user+"&job="+job+"&opc="+option
     })
@@ -84,6 +89,31 @@ $(document).ready(function() {
     var data = [trace];
     Plotly.newPlot('count5', data);
     });
+    readTextFile(nameFile, function(text){
+      var data = JSON.parse(text);
+      console.log(data);  
+      //tabla fija
+      var trace = {
+          x: data.count7.counter_x,
+          type: 'histogram',
+        };
+      var data = [trace];
+      Plotly.newPlot('count7Prediction', data);
+      });
+      readTextFile(nameFile, function(text){
+        var data = JSON.parse(text);
+        console.log(data);  
+        //tabla fija
+        var trace = {
+            values: data.count7.counter_y,
+            labels: data.count7.counter_x,
+            type: 'pie'
+          };
+        var data = [trace];
+        Plotly.newPlot('count7Classification', data);
+        });
+
+
     readTextFile(nameFile, function(text){
     var data = JSON.parse(text);
     console.log(data);  

@@ -39,14 +39,16 @@ class handler_dataset(object):
             preparing.ignore()
         elif (opc == 1):
             preparing.filter()
-    def statistics_dataset(self, pathResponse):
+    def statistics_dataset(self, pathResponse, opc):
         self.pathResponse = pathResponse
-        statistics = statistics_dataset.statistics_dataset(self.pathResponse)
+        self.opc = opc
+        statistics = statistics_dataset.statistics_dataset(self.pathResponse, self.opc)
         statistics.count1()
         statistics.count2()
         statistics.count3()
         statistics.count4()
         statistics.count5()
         statistics.count6()
+        statistics.count7()
         statistics.json()
         

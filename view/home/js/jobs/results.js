@@ -81,6 +81,14 @@ $(document).ready(function() {
           Plotly.newPlot('count2', data, layout);
           });
         });
+
+
+        var nameFile2 = "../../../jobs/1/1594879133/results/resultsTraining.json";
+        readTextFile(nameFile2, function(text){
+          var data = JSON.parse(text);
+          console.log(data)
+          });
+  
   });
 
   
