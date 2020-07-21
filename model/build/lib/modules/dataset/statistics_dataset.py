@@ -88,9 +88,8 @@ class statistics_dataset(object):
             counts = self.clean_dataset['response'].value_counts().tolist()
             self.data['count7'].update({"counter_x":values})
             self.data['count7'].update({"counter_y":counts})
-
-
         
     def json(self):
         with open(self.path_download+"statistics.json", 'w') as fp:
             json.dump(self.data, fp)
+

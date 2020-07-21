@@ -89,6 +89,9 @@ $(document).ready(function() {
           console.log(data)
           });
   
+          $('#download').on('click', function() {
+            window.location.href = '../../../jobs/1/1594879133/results/model.joblib';
+          });
   });
 
   

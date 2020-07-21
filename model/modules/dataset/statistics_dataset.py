@@ -92,3 +92,4 @@ class statistics_dataset(object):
     def json(self):
         with open(self.path_download+"statistics.json", 'w') as fp:
             json.dump(self.data, fp)
+

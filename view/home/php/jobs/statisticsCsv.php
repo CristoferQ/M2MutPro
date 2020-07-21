@@ -3,7 +3,7 @@
   #recibimos los parametros...
   $idUSer = $_REQUEST['user'];
   $idJob = $_REQUEST['job'];
-  $opc = $_REQUEST['opc'];
+  $opc = $_REQUEST['option'];
 
   #creamos un directorio para almacenar los resultados
   $response ['job'] = $idJob; #declaracion de arreglo asociativo
@@ -24,10 +24,5 @@
   #$response['exec'] = $output[0];
   
   echo json_encode($response);
-
-  #else{
-  #$response['file'] = "ERROR";
-  #echo json_encode($response);
-  #}
   
 ?>
