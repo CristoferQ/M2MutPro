@@ -233,17 +233,16 @@ $(document).ready(function() {
             errorGraphic[i] = valuesReal[i]-valuesPredict[i];
 
           }
+          $('#download').on('click', function() {
+            window.location.href = '../../../jobs/1/1594879133/results/model.joblib';
+          });
 
+          
           //generamos el grafico...
           createGraphicData(valuesReal, valuesPredict, xValues);
           createGraphicDataOnlyTrace(errorGraphic, xValues);
 
 
-          $('#download').on('click', function() {
-            window.location.href = '../../../jobs/1/1594879133/results/model.joblib';
-          });
-  
-  
         }); 
     });
 
