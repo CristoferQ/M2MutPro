@@ -34,7 +34,7 @@ var getIDForDetail = function(tbody, table){
 
 		var statusJob = data.statusJob;
     
-		if (statusJob != "Created" && statusJob != "START" &&  statusJob != "PROCESING"){
+		if (statusJob != "Created" && statusJob != "Initialized" &&  statusJob != "PROCESING"){
 			if (data.typeDataSet == 'Prediction'){
 				location.href="../results?job="+idjob;
 			}else{

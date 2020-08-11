@@ -2,6 +2,7 @@ import sys
 import json
 from modules.dataset import handler_dataset
 from modules.results import handler_results
+from modules.services import handler_services
 
 class launcher(object):
 
@@ -28,7 +29,11 @@ class launcher(object):
         pathResponse = sys.argv[2]
         opc = int(sys.argv[3])
         h_dataset.statistics_dataset(pathResponse,opc)
-    elif (option == 4):#results
+    elif (option == 4):#services
+        h_services = handler_services.handler_services()
+        pathResponse = sys.argv[2]
+        h_services.sdm_service(pathResponse)
+    elif (option == 5):#results
         h_results = handler_results.handler_results()
         pathResponse = sys.argv[2]
         h_results.exec_results(pathResponse)

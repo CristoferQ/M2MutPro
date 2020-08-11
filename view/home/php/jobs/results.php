@@ -22,11 +22,11 @@
         $response ['pdbCode'] = $data['pdbCode'];
     }
     
-    $archivo = "/var/www/html/M2MutPro/jobs/$idUSer/$idJob/results/SDM.csv";
+    $archivo = "/var/www/html/M2MutPro/jobs/1/1594879133/results/sdm.csv";
     $command = "cat $archivo | wc -l";
     $output = [];
     exec($command, $output);
-    if(!$output){
+    if($output){
       $response ['numberOfExamples'] = $output[0]-1;
     }
     else{

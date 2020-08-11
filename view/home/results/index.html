@@ -553,6 +553,7 @@
                             <thead>
                                 <th class="column-title">Option</th>
                                 <th class="column-title">Value</th>
+                                <th class="column-title">Description</th>
                             </thead>
             
                             <tbody>
@@ -564,6 +565,9 @@
                                   <span class="text-main text-semibold precision"></span>
                                   <br>
                                 </td>
+                                <td>
+                                  <p>In the field of information retrieval, precision is the fraction of retrieved documents that are relevant to the query. Precision is used with recall, the percent of all relevant documents that is returned by the search. The two measures are sometimes used together in the F1 Score (or f-measure) to provide a single measurement for a system.</p>
+                                </td>
                                </tr>
   
                                 <tr>
@@ -573,6 +577,9 @@
                                     <td>
                                         <span class="text-main text-semibold accuracy"></span>
                                         <br>
+                                    </td>
+                                    <td>
+                                      <p>Accuracy is a statistical measure of how well a classification test correctly identifies or excludes a condition. That is, the accuracy is the proportion of true results (both true positives and true negatives) among the total number of cases examined. A value close to 100% indicates a high accuracy of the model, while values below 60% indicate that the classification delivers random elements and does not generate adequate confidence, so the model requires refinement or simply should be discarded.</p>
                                     </td>
                                 </tr>
   
@@ -584,6 +591,9 @@
                                         <span class="text-main text-semibold recall"></span>
                                         <br>
                                     </td>
+                                    <td>
+                                      <p>In information retrieval, recall is the fraction of the relevant documents that are successfully retrieved. Precision is used with recall, the percent of all relevant documents that is returned by the search. The two measures are sometimes used together in the F1 Score (or f-measure) to provide a single measurement for a system.</p>
+                                    </td>
                                 </tr>
   
                                 <tr>
@@ -593,6 +603,9 @@
                                     <td>
                                         <span class="text-main text-semibold f1_score"></span>
                                         <br>
+                                    </td>
+                                    <td>
+                                      <p>The F1 score can be interpreted as a weighted average of the precision and recall, where an F1 score reaches its best value at 1 and worst score at 0. The relative contribution of precision and recall to the F1 score are equal.</p>
                                     </td>
                                 </tr>
                             </tbody>
@@ -621,7 +634,7 @@
                       <div class="clearfix"></div>
                       <div class="col-md-2 col-sm-2">
                         <h4>Description: </h4>
-                        <p>In this dynamic histogram you can see the values ​​obtained for each categorical attribute in the data set obtained from SDM</p>
+                        <p>A Confusion Matrix is a specific table layout that allows visualization of the performance of an algorithm, typically a supervised learning one (in unsupervised learning it is usually called a matching matrix). Each row of the matrix represents the instances in a predicted class while each column represents the instances in an actual class (or vice versa). The name stems from the fact that it makes it easy to see if the system is confusing two classes (i.e. commonly mislabeling one as another).</p>
                       </div>
                       <div class="col-md-10 col-sm-10">
                         <div id="confusionMatrixGraph"></div>
@@ -647,7 +660,7 @@
                       <div class="clearfix"></div>
                       <div class="col-md-2 col-sm-2">
                         <h4>Description: </h4>
-                        <p>In this dynamic histogram you can see the values ​​obtained for each categorical attribute in the data set obtained from SDM</p>
+                        <p>This graph shows the specificity values, which are related to the model certainty and the sensitivity values ​​that are related to the model uncertainty.</p>
                       </div>
                       <div class="col-md-10 col-sm-10">
                         <div id="fiabilidad"></div>
@@ -673,7 +686,7 @@
                       <div class="clearfix"></div>
                       <div class="col-md-2 col-sm-2">
                         <h4>Description: </h4>
-                        <p>In this dynamic histogram you can see the values ​​obtained for each categorical attribute in the data set obtained from SDM</p>
+                        <p>A learning curve shows the validation and training score of an estimator for varying numbers of training samples. It is a tool to find out how much we benefit from adding more training data and whether the estimator suffers more from a variance error or a bias error. If both the validation score and the training score converge to a value that is too low with increasing size of the training set, we will not benefit much from more training data. In the following plot, the user can see an example: naive Bayes roughly converges to a low score.</p>
                       </div>
                       <div class="col-md-10 col-sm-10">
                         <img id="learningCurveImg" class="img-thumbnail"><br/>
@@ -712,7 +725,7 @@
                       <div class="clearfix"></div>
                       <div class="col-md-12 col-sm-12">
                         <h4>Description: </h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eaque, rerum adipisci hic maiores ipsam unde quas quod animi sunt officia officiis velit eveniet accusantium dicta iste vel. Cupiditate, quibusdam. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eaque, rerum adipisci hic maiores ipsam unde quas quod.</p>
+                        <p>It is possible export the created model, using joblib library. The mainly advantages to export model are to classifier new examples and using the model. Is important remember that, when you use a model, the new examples must have the sames features, in case that it is not, the model will not to work.</p>
                         <button id="download" class="btn btn-info  btn-lg" style="width:100%"><i class="fa fa-download"></i> Download</button> 
                       </div>
                     </div>
