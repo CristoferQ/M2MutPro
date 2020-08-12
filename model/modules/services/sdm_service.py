@@ -8,6 +8,7 @@ import mechanize
 import time
 import argparse
 import pandas as pd
+import os
 
 class sdm_service(object):
     def __init__(self, pathResponse):
@@ -32,12 +33,27 @@ class sdm_service(object):
         #if args.result and args.verbose=='v':
         #    print ("Lugar para almacenar resultados: ", args.result)
 
-
-        
-        
-        
         clean_dataset = pd.read_csv(self.pathResponse+"clean.csv")
         print(clean_dataset)
+        for file in os.listdir(self.pathResponse):
+            if file.endswith(".pdb"):
+                filename = os.path.splitext(file)[0] #nombre de archivo sin extension
+
+        print(filename)
+
+        file = open(self.pathResponse+"mutationFile.txt", "w") 
+        for index, fila in clean_dataset.iterrows():
+            #FALTA AGREGAR
+            residuesDict = {'ALA':'A','ASX':'B','CYS':'C','ASP':'D','VAL':'V','SER':'S'}
+            for element in residuesDict:
+                if(fila['wt'] == element):
+                    file.write(fila['chain']+" "+residuesDict.get(element)+str(fila['pos'])) 
+                if(fila['mt'] == element):
+                    file.write(residuesDict.get(element)+"\n")
+        file.close()
+
+        
+
         mutationFile = "F"
         pdb = "F"
         path = "F"
