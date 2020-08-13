@@ -1,5 +1,8 @@
 chain,wt,pos,mt,response
 A,VAL,30,SER,good
 A,VAL,30,SER,good
-A,VAL,30,VAL,bad
-A,VAL,30,VAL,bad
+A,VAL,30,SER,bad
+A,VAL,30,SER,bad
+A,VAL,41,LYS,bad
+A,ALA,45,VAL,bad
+A,SER,47,ARG,good
