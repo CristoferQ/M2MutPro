@@ -5,5 +5,6 @@ class handler_services(object):
         self.pathResponse = pathResponse
         preparing_services = sdm_service.sdm_service(self.pathResponse)
         #preparing_services.sdm()
+        #preparing_services.extract()
         preparing_services.results()
         

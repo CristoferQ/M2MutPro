@@ -134,9 +134,18 @@ class sdm_service(object):
             #print (marca+" has been downloaded")
 
         #print ("End : %s" % time.ctime())
-    def results(self):
+    def extract(self):
         for file in os.listdir(self.pathResponse):
             if file.endswith(".tar"):
                 tar = tarfile.open(self.pathResponse+file, "r:")
                 tar.extractall(path=self.pathResponse+"/sdm")
                 tar.close()
+
+    def delete(self):
+        for file in os.listdir(self.pathResponse+"/sdm"): #elimina los pdb
+            if file.endswith(".pdb"):
+                os.remove(self.pathResponse+"/sdm/"+file)
+        for file in os.listdir(self.pathResponse+"/sdm"): #elimina los pdb menos el output
+            if file.endswith("output.csv"):
+            else:
+                os.remove(self.pathResponse+"/sdm/"+file)
