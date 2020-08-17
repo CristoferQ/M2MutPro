@@ -141,14 +141,25 @@ class sdm_service(object):
                 tar.extractall(path=self.pathResponse+"/sdm")
                 tar.close()
 
-    def results(self):
+    def delete(self):
         for file in os.listdir(self.pathResponse+"/sdm"): #elimina los pdb
             if file.endswith(".pdb"):
                 os.remove(self.pathResponse+"/sdm/"+file)
-        for file in os.listdir(self.pathResponse+"/sdm"):
+        for file in os.listdir(self.pathResponse+"/sdm"): #elimina los pdb menos el output
             if file.endswith("output.csv"):
-                print("hola")
+                print()
             else:
                 os.remove(self.pathResponse+"/sdm/"+file)
-        
+        for file in os.listdir(self.pathResponse):
+            if file.endswith(".tar"):
+                os.remove(self.pathResponse+file)
+
+    def format(self):
+        for file in os.listdir(self.pathResponse+"/sdm"):
+            sdm_output = pd.read_csv(self.pathResponse+"/sdm/"+file)
+            sdm_output = sdm_output.drop(sdm_output.columns[[0, 1, 2]], axis=1) 
+            sdm_output.columns = ["WT_SSE","WT_RSA","WT_DEPTH","WT_OSP","WT_SS","WT_SN","WT_SO","MT_SSE","MT_RSA","MT_DEPTH","MT_OSP","MT_SS","MT_SN","MT_SO","Predicted_ddg","Outcome"]
+            sdm_output.to_csv(self.pathResponse+"/sdm/"+file,index = False)
+            
+            
 

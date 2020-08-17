@@ -6,5 +6,5 @@ class handler_services(object):
         preparing_services = sdm_service.sdm_service(self.pathResponse)
         #preparing_services.sdm()
         #preparing_services.extract()
-        preparing_services.delete()
-        
+        #preparing_services.delete()
+        preparing_services.format()
