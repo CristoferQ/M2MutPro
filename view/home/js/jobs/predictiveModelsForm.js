@@ -10,8 +10,7 @@ function changeItemize(){
     if($('#validation').val() == 0) {
       $('#val1').show();
       $('#val2').show();
-      $('#val3').hide();
-      
+      $('#val3').hide();      
     }
     if($('#validation').val() == 1) {
       $('#val3').show();
@@ -2282,11 +2281,145 @@ function loadData(){
   var user = getQuerystring("user");
   var job = getQuerystring("job");
   var opc = getQuerystring("opc");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  var p_AdaBoostRegressor_1 = $('#p_AdaBoostRegressor_1_val').val();
+  var p_AdaBoostRegressor_2 = $('#p_AdaBoostRegressor_2_val').val(); 
+  var p_BaggingRegressor_1 = $('#p_BaggingRegressor_1_val').val();   
+  
+  $('#p_BaggingRegressor_2').val();   
+  $('#p_DecisionTree_1').val();
+  $('#p_DecisionTree_2').val(); 
+  $('#p_GradientBoostingRegressor_1').val(); 
+  $('#p_GradientBoostingRegressor_2').val(); 
+  $('#p_GradientBoostingRegressor_3').val(); 
+  $('#p_GradientBoostingRegressor_4').val(); 
+  $('#p_GradientBoostingRegressor_5').val(); 
+  $('#p_KNeighborsRegressor_1').val();
+  $('#p_KNeighborsRegressor_2').val();
+  $('#p_KNeighborsRegressor_3').val();
+  $('#p_KNeighborsRegressor_4').val();
+  $('#p_MLPRegressor_1').val();
+  $('#p_MLPRegressor_2').val();
+  $('#p_MLPRegressor_3').val();
+  $('#p_MLPRegressor_4').val();
+  $('#p_MLPRegressor_5').val();
+  $('#p_MLPRegressor_6').val();
+  $('#p_MLPRegressor_7').val();
+  $('#p_MLPRegressor_8').val();
+  $('#p_MLPRegressor_9').val();
+  $('#p_NuSVR_1').val();
+  $('#p_NuSVR_2').val();
+  $('#p_NuSVR_3').val();
+  $('#p_NuSVR_4').val();
+  $('#p_RandomForestRegressor_1').val();
+  $('#p_RandomForestRegressor_2').val();
+  $('#p_RandomForestRegressor_3').val();
+  $('#p_RandomForestRegressor_4').val();
+  $('#p_RandomForestRegressor_5').val();
+  $('#p_SVR_1').val();
+  $('#p_SVR_2').val();
+  $('#p_SVR_3').val();
+
+  $('#c_validation').val();
+  $('#c_AdaBoostClassifier_1').val();
+  $('#c_AdaBoostClassifier_2').val();
+  $('#c_BaggingClassifier_1').val();
+  $('#c_BaggingClassifier_2').val();
+  $('#c_DecisionTree_1').val();
+  $('#c_DecisionTree_2').val();
+  $('#c_GradientBoostingClassifier_1').val();
+  $('#c_GradientBoostingClassifier_2').val();
+  $('#c_GradientBoostingClassifier_3').val();
+  $('#c_GradientBoostingClassifier_4').val();
+  $('#c_KNeighborsClassifier_1').val();
+  $('#c_KNeighborsClassifier_2').val();
+  $('#c_KNeighborsClassifier_3').val();
+  $('#c_KNeighborsClassifier_4').val();
+  $('#c_MLPClassifier_1').val();
+  $('#c_MLPClassifier_2').val();
+  $('#c_MLPClassifier_3').val();
+  $('#c_MLPClassifier_4').val();
+  $('#c_MLPClassifier_5').val();
+  $('#c_MLPClassifier_6').val();
+  $('#c_MLPClassifier_7').val();
+  $('#c_MLPClassifier_8').val();
+  $('#c_MLPClassifier_9').val();
+  $('#c_NuSVC_1').val();
+  $('#c_NuSVC_2').val();
+  $('#c_NuSVC_3').val();
+  $('#c_NuSVC_4').val();
+  $('#c_RandomForestClassifier_1').val();
+  $('#c_RandomForestClassifier_2').val();
+  $('#c_RandomForestClassifier_3').val();
+  $('#c_RandomForestClassifier_4').val();
+  $('#c_RandomForestClassifier_5').val();
+  $('#c_SVC_1').val();
+  $('#c_SVC_2').val();
+  $('#c_SVC_3').val();
+  $('#c_SVC_4').val();
+
+  console.log(p_AdaBoostRegressor_1)
   $.ajax({
     method: "GET",
     url: "../php/jobs/predictiveModelsForm.php",
     data: {
-      user,job,opc
+      user,job,opc,
+      p_AdaBoostRegressor_1,
+      p_AdaBoostRegressor_2,
+      p_BaggingRegressor_1,
     }
   }).done(function(info){
     var json_info = JSON.parse( info );

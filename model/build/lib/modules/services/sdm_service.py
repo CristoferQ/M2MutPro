@@ -154,6 +154,11 @@ class sdm_service(object):
             if file.endswith(".tar"):
                 os.remove(self.pathResponse+file)
 
+        for file in os.listdir(self.pathResponse):
+            if file.startswith("small_file"):
+                os.remove(self.pathResponse+file)
+        
+
     def format(self):
         for file in os.listdir(self.pathResponse+"/sdm"):
             sdm_output = pd.read_csv(self.pathResponse+"/sdm/"+file)
@@ -162,4 +167,5 @@ class sdm_service(object):
             sdm_output.to_csv(self.pathResponse+"/sdm/"+file,index = False)
             
             
+
 

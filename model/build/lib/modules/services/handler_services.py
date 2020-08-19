@@ -1,10 +1,10 @@
 from modules.services import sdm_service
 
 class handler_services(object):
-    def sdm_service(self, pathResponse):
+    def exec_services(self, pathResponse):
         self.pathResponse = pathResponse
-        preparing_services = sdm_service.sdm_service(self.pathResponse)
-        #preparing_services.sdm()
-        preparing_services.extract()
-        preparing_services.delete()
-        preparing_services.format()
+        preparing_sdm_services = sdm_service.sdm_service(self.pathResponse)
+        #preparing_sdm_services.sdm()
+        #preparing_sdm_services.extract()
+        preparing_sdm_services.delete()
+        #preparing_sdm_services.format()

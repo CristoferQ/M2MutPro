@@ -32,7 +32,7 @@ class launcher(object):
     elif (option == 4):#services
         h_services = handler_services.handler_services()
         pathResponse = sys.argv[2]
-        h_services.sdm_service(pathResponse)
+        h_services.exec_services(pathResponse)
     elif (option == 5):#results
         h_results = handler_results.handler_results()
         pathResponse = sys.argv[2]

@@ -1,0 +1,5 @@
+{
+    "algorithm": "AdaBoostRegressor",
+    "N Estimators": "123",
+    "Loss": "2"
+}
