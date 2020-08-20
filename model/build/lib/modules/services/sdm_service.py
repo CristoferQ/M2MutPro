@@ -157,7 +157,6 @@ class sdm_service(object):
         for file in os.listdir(self.pathResponse):
             if file.startswith("small_file"):
                 os.remove(self.pathResponse+file)
-        
 
     def format(self):
         for file in os.listdir(self.pathResponse+"/sdm"):

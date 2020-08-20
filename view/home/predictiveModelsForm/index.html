@@ -216,10 +216,10 @@
           <label class="col-sm-5 control-label">Loss</label>
            <div class="col-sm-5">
             <select id="p_AdaBoostRegressor_2_val">
-              <option value="0">Default</option> 
-              <option value="1">Linear</option>
-              <option value="2">Square</option>
-              <option value="3">Exponential</option>
+              <option value="Default">Default</option> 
+              <option value="Linear">Linear</option>
+              <option value="Square">Square</option>
+              <option value="Exponential">Exponential</option>
             </select>
            </div> 
           </div>
@@ -233,10 +233,10 @@
            <div class="form-group" name="p_BaggingRegressor_2" id="p_BaggingRegressor_2" style="display:none;">
             <label class="col-sm-5 control-label">Bootstrap</label>
              <div class="col-sm-5">
-              <select>
-                <option value="0">Default</option> 
-                <option value="1">True</option>
-                <option value="2">False</option>
+              <select id="p_BaggingRegressor_2_val">
+                <option value="Default">Default</option> 
+                <option value="True">True</option>
+                <option value="False">False</option>
               </select>
              </div> 
             </div>
@@ -244,11 +244,11 @@
             <div class="form-group" name="p_DecisionTree_1" id="p_DecisionTree_1" style="display:none;">
               <label class="col-sm-5 control-label">Criterion</label>
                <div class="col-sm-5">
-                <select>
-                  <option value="0">Default</option> 
-                  <option value="1">mse</option>
-                  <option value="2">friedman_mse</option>
-                  <option value="3">mae</option>
+                <select id="p_DecisionTree_1_val">
+                  <option value="Default">Default</option> 
+                  <option value="mse">mse</option>
+                  <option value="friedman_mse">friedman_mse</option>
+                  <option value="mae">mae</option>
                 </select>
                </div> 
                <div class="clearfix"></div>
@@ -256,10 +256,10 @@
               <div class="form-group" name="p_DecisionTree_2" id="p_DecisionTree_2" style="display:none;">
                 <label class="col-sm-5 control-label">Splitter</label>
                  <div class="col-sm-5">
-                  <select>
-                    <option value="0">Default</option> 
-                    <option value="1">Best</option>
-                    <option value="2">Random</option>
+                  <select id="p_DecisionTree_2_val">
+                    <option value="Default">Default</option> 
+                    <option value="Best">Best</option>
+                    <option value="Random">Random</option>
                   </select>
                  </div> 
                 </div>
@@ -267,12 +267,12 @@
                 <div class="form-group" name="p_GradientBoostingRegressor_1" id="p_GradientBoostingRegressor_1" style="display:none;">
                   <label class="col-sm-5 control-label">Loss</label>
                    <div class="col-sm-5">
-                    <select>
-                      <option value="0">Default</option> 
-                      <option value="1">ls</option>
-                      <option value="2">lad</option>
-                      <option value="3">huber</option>
-                      <option value="4">quantile</option>
+                    <select id="p_GradientBoostingRegressor_1_val">
+                      <option value="Default">Default</option> 
+                      <option value="ls">ls</option>
+                      <option value="lad">lad</option>
+                      <option value="huber">huber</option>
+                      <option value="quantile">quantile</option>
                     </select>
                    </div> 
                   </div>
@@ -280,30 +280,30 @@
                   <div class="form-group" id="p_GradientBoostingRegressor_2" name="p_GradientBoostingRegressor_2" style="display:none;">
                     <label class="col-sm-5 control-label">N Estimators</label>
                              <div class="col-sm-5">
-                                 <input type="text" class="form-control" autocomplete="off"/>
+                                 <input id="p_GradientBoostingRegressor_2_val" type="text" class="form-control" autocomplete="off"/>
                              </div>
                    </div>
                    <div class="clearfix"></div>
                    <div class="form-group" id="p_GradientBoostingRegressor_3" name="p_GradientBoostingRegressor_3" style="display:none;">
                     <label class="col-sm-5 control-label">Min Samples Split</label>
                              <div class="col-sm-5">
-                                 <input type="text" class="form-control" autocomplete="off"/>
+                                 <input id="p_GradientBoostingRegressor_3_val" type="text" class="form-control" autocomplete="off"/>
                              </div>
                    </div>
                    <div class="form-group" id="p_GradientBoostingRegressor_4" name="p_GradientBoostingRegressor_4" style="display:none;">
                     <label class="col-sm-5 control-label">Min Samples Leaf</label>
                              <div class="col-sm-5">
-                                 <input type="text" class="form-control" autocomplete="off"/>
+                                 <input id="p_GradientBoostingRegressor_4_val" type="text" class="form-control" autocomplete="off"/>
                              </div>
                    </div>
                    <div class="form-group" name="p_GradientBoostingRegressor_5" id="p_GradientBoostingRegressor_5" style="display:none;">
                     <label class="col-sm-5 control-label">Criterion</label>
                      <div class="col-sm-5">
-                      <select>
-                        <option value="0">Default</option> 
-                        <option value="1">friedman_mse</option>
-                        <option value="2">mse</option>
-                        <option value="3">mae</option>
+                      <select id="p_GradientBoostingRegressor_5_val">
+                        <option value="Default">Default</option> 
+                        <option value="friedman_mse">friedman_mse</option>
+                        <option value="mse">mse</option>
+                        <option value="mae">mae</option>
                       </select>
                      </div> 
                     </div>
@@ -319,12 +319,12 @@
                       <div class="form-group" name="p_KNeighborsRegressor_2" id="p_KNeighborsRegressor_2" style="display:none;">
                         <label class="col-sm-5 control-label">Algorithm</label>
                          <div class="col-sm-5">
-                          <select>
-                            <option value="0">Default</option> 
-                            <option value="1">auto</option>
-                            <option value="2">ball_tree</option>
-                            <option value="3">kd_tree</option>
-                            <option value="4">brute</option>
+                          <select id="p_KNeighborsRegressor_2_val">
+                            <option value="Default">Default</option> 
+                            <option value="auto">auto</option>
+                            <option value="ball_tree">ball_tree</option>
+                            <option value="kd_tree">kd_tree</option>
+                            <option value="brute">brute</option>
                           </select>
                          </div> 
                         </div>
@@ -332,10 +332,10 @@
                         <div class="form-group" name="p_KNeighborsRegressor_3" id="p_KNeighborsRegressor_3" style="display:none;">
                           <label class="col-sm-5 control-label">Metric</label>
                            <div class="col-sm-5">
-                            <select>
-                              <option value="0">Default</option> 
-                              <option value="1">minkowski</option>
-                              <option value="2">euclidean</option>
+                            <select id="p_KNeighborsRegressor_3_val">
+                              <option value="Default">Default</option> 
+                              <option value="minkowski">minkowski</option>
+                              <option value="euclidean">euclidean</option>
                             </select>
                            </div> 
                           </div>
@@ -343,10 +343,10 @@
                           <div class="form-group" name="p_KNeighborsRegressor_4" id="p_KNeighborsRegressor_4" style="display:none;">
                             <label class="col-sm-5 control-label">Weights</label>
                              <div class="col-sm-5">
-                              <select>
-                                <option value="0">Default</option> 
-                                <option value="1">uniform</option>
-                                <option value="2">distance</option>
+                              <select id="p_KNeighborsRegressor_4_val">
+                                <option value="Default">Default</option> 
+                                <option value="uniform">uniform</option>
+                                <option value="distance">distance</option>
                               </select>
                              </div> 
                             </div>
@@ -355,12 +355,12 @@
                     <div class="form-group" name="p_MLPRegressor_1" id="p_MLPRegressor_1" style="display:none;">
                       <label class="col-sm-5 control-label">Activation</label>
                        <div class="col-sm-5">
-                        <select>
-                          <option value="0">Default</option> 
-                          <option value="1">identity</option>
-                          <option value="2">logistic</option>
-                          <option value="3">tanh</option>
-                          <option value="4">relu</option>
+                        <select id="p_MLPRegressor_1_val">
+                          <option value="Default">Default</option> 
+                          <option value="identity">identity</option>
+                          <option value="logistic">logistic</option>
+                          <option value="tanh">tanh</option>
+                          <option value="relu">relu</option>
                         </select>
                         </div> 
                     </div> 
@@ -368,11 +368,11 @@
                     <div class="form-group" name="p_MLPRegressor_2" id="p_MLPRegressor_2" style="display:none;">
                       <label class="col-sm-5 control-label">Solver</label>
                        <div class="col-sm-5">
-                        <select>
-                          <option value="0">Default</option> 
-                          <option value="1">lbfgs</option>
-                          <option value="2">sgd</option>
-                          <option value="3">adam</option>
+                        <select id="p_MLPRegressor_2_val">
+                          <option value="Default">Default</option> 
+                          <option value="lbfgs">lbfgs</option>
+                          <option value="sgd">sgd</option>
+                          <option value="adam">adam</option>
                         </select>
                       </div> 
                     </div>
@@ -380,18 +380,18 @@
                     <div class="form-group" id="p_MLPRegressor_3" name="p_MLPRegressor_3" style="display:none;">
                       <label class="col-sm-5 control-label">L2 penalty</label>
                                <div class="col-sm-5">
-                                   <input type="text" class="form-control" autocomplete="off"/>
+                                   <input id="p_MLPRegressor_3_val" type="text" class="form-control" autocomplete="off"/>
                                </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group" name="p_MLPRegressor_4" id="p_MLPRegressor_4" style="display:none;">
                       <label class="col-sm-5 control-label">Learning rate</label>
                        <div class="col-sm-5">
-                        <select>
-                          <option value="0">Default</option> 
-                          <option value="1">constant</option>
-                          <option value="2">invscalling</option>
-                          <option value="3">adaptative</option>
+                        <select id="p_MLPRegressor_4_val">
+                          <option value="Default">Default</option> 
+                          <option value="constant">constant</option>
+                          <option value="invscalling">invscalling</option>
+                          <option value="adaptative">adaptative</option>
                         </select>
                       </div> 
                     </div>
@@ -427,10 +427,10 @@
                     <div class="form-group" name="p_MLPRegressor_9" id="p_MLPRegressor_9" style="display:none;">
                       <label class="col-sm-5 control-label">Shuffle</label>
                        <div class="col-sm-5">
-                        <select>
-                          <option value="0">Default</option> 
-                          <option value="1">true</option>
-                          <option value="2">false</option>
+                        <select id="p_MLPRegressor_9_val">
+                          <option value="Default">Default</option> 
+                          <option value="true">true</option>
+                          <option value="false">false</option>
                         </select>
                       </div>
                     </div>
@@ -439,13 +439,13 @@
                     <div class="form-group" name="p_NuSVR_1" id="p_NuSVR_1" style="display:none;">
                       <label class="col-sm-5 control-label">Kernel Option</label>
                        <div class="col-sm-5">
-                        <select>
-                          <option value="0">Default</option> 
-                          <option value="1">rbf</option>
-                          <option value="2">linear</option>
-                          <option value="3">poly</option>
-                          <option value="4">sigmoid</option>
-                          <option value="5">precomputed</option>
+                        <select id="p_NuSVR_1_val">
+                          <option value="Default">Default</option> 
+                          <option value="rbf">rbf</option>
+                          <option value="linear">linear</option>
+                          <option value="poly">poly</option>
+                          <option value="sigmoid">sigmoid</option>
+                          <option value="precomputed">precomputed</option>
                         </select>
                       </div>
                     </div>
@@ -453,21 +453,21 @@
                     <div class="form-group" id="p_NuSVR_2" name="p_NuSVR_2" style="display:none;">
                       <label class="col-sm-5 control-label">Nu Value</label>
                                <div class="col-sm-5">
-                                   <input type="text" class="form-control" autocomplete="off"/>
+                                   <input id="p_NuSVR_2_val" type="text" class="form-control" autocomplete="off"/>
                                </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group" id="p_NuSVR_3" name="p_NuSVR_3" style="display:none;"> 
                       <label class="col-sm-5 control-label">Degree Value</label>
                                <div class="col-sm-5">
-                                   <input type="text" class="form-control" autocomplete="off"/>
+                                   <input id="p_NuSVR_3_val" type="text" class="form-control" autocomplete="off"/>
                                </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group" id="p_NuSVR_4" name="p_NuSVR_4" style="display:none;">
                       <label class="col-sm-5 control-label">Gamma Value</label>
                                <div class="col-sm-5">
-                                   <input type="text" class="form-control" autocomplete="off"/>
+                                   <input id="p_NuSVR_4_val" type="text" class="form-control" autocomplete="off"/>
                                </div>
                     </div>
                     <div class="clearfix"></div>
@@ -482,10 +482,10 @@
                     <div class="form-group" name="p_RandomForestRegressor_2" id="p_RandomForestRegressor_2" style="display:none;">
                       <label class="col-sm-5 control-label">Criterion</label>
                        <div class="col-sm-5">
-                        <select>
-                          <option value="0">Default</option> 
-                          <option value="1">mse</option>
-                          <option value="2">mae</option>
+                        <select id="p_RandomForestRegressor_2_val">
+                          <option value="Default">Default</option> 
+                          <option value="mse">mse</option>
+                          <option value="mae">mae</option>
                         </select>
                       </div>
                     </div>
@@ -493,10 +493,10 @@
                     <div class="form-group" name="p_RandomForestRegressor_3" id="p_RandomForestRegressor_3" style="display:none;">
                       <label class="col-sm-5 control-label">Bootstrap</label>
                        <div class="col-sm-5">
-                        <select>
-                          <option value="0">Default</option> 
-                          <option value="1">true</option>
-                          <option value="2">false</option>
+                        <select id="p_RandomForestRegressor_3_val">
+                          <option value="Default">Default</option> 
+                          <option value="true">true</option>
+                          <option value="false">false</option>
                         </select>
                       </div>
                     </div>
@@ -504,27 +504,27 @@
                     <div class="form-group" id="p_RandomForestRegressor_4" name="p_RandomForestRegressor_4" style="display:none;">
                       <label class="col-sm-5 control-label">Min Samples Split</label>
                                <div class="col-sm-5">
-                                   <input type="text" class="form-control" autocomplete="off"/>
+                                   <input id="p_RandomForestRegressor_4_val" type="text" class="form-control" autocomplete="off"/>
                                </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group" id="p_RandomForestRegressor_5" name="p_RandomForestRegressor_5" style="display:none;">
                       <label class="col-sm-5 control-label">Min Samples Leaf</label>
                                <div class="col-sm-5">
-                                   <input type="text" class="form-control" autocomplete="off"/>
+                                   <input id="p_RandomForestRegressor_5_val" type="text" class="form-control" autocomplete="off"/>
                                </div>
                     </div>
                     <!--PREDICCION SVR-->
                     <div class="form-group" name="p_SVR_1" id="p_SVR_1" style="display:none;">
                       <label class="col-sm-5 control-label">Kernel Option</label>
                        <div class="col-sm-5">
-                        <select>
-                          <option value="0">Default</option> 
-                          <option value="1">rbf</option>
-                          <option value="2">linear</option>
-                          <option value="3">poly</option>
-                          <option value="4">sigmoid</option>
-                          <option value="5">precomputed</option>
+                        <select id="p_SVR_1_val">
+                          <option value="Default">Default</option> 
+                          <option value="rbf">rbf</option>
+                          <option value="linear">linear</option>
+                          <option value="poly">poly</option>
+                          <option value="sigmoid">sigmoid</option>
+                          <option value="precomputed">precomputed</option>
                         </select>
                       </div>
                     </div>
@@ -532,14 +532,14 @@
                     <div class="form-group" id="p_SVR_2" name="p_SVR_2" style="display:none;">
                       <label class="col-sm-5 control-label">Degree Value</label>
                                <div class="col-sm-5">
-                                   <input type="text" class="form-control" autocomplete="off"/>
+                                   <input id="p_SVR_2_val" type="text" class="form-control" autocomplete="off"/>
                                </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group" id="p_SVR_3" name="p_SVR_3" style="display:none;">
                       <label class="col-sm-5 control-label">Gamma Value</label>
                                <div class="col-sm-5">
-                                   <input type="text" class="form-control" autocomplete="off"/>
+                                   <input id="p_SVR_3_val" type="text" class="form-control" autocomplete="off"/>
                                </div>
                     </div>
                     <div class="clearfix"></div>
