@@ -829,7 +829,7 @@ function changeItemize(){
 
         var min = 2,
             max = 50,
-            select = document.getElementById('p_KNeighborsRegressor_s');
+            select = document.getElementById('p_KNeighborsRegressor_1_val');
   
             for (var i = min; i<=max; i++){
               var opt = document.createElement('option');
@@ -920,7 +920,7 @@ function changeItemize(){
         $('#p_KNeighborsRegressor_4').hide(); 
         var min = 1,
         max = 50,
-        select = document.getElementById('p_MLPRegressor_s1');
+        select = document.getElementById('p_MLPRegressor_5_val');
 
         for (var i = min; i<=max; i++){
           var opt = document.createElement('option');
@@ -930,7 +930,7 @@ function changeItemize(){
         }
         var min = 1,
         max = 50,
-        select = document.getElementById('p_MLPRegressor_s2');
+        select = document.getElementById('p_MLPRegressor_6_val');
 
         for (var i = min; i<=max; i++){
           var opt = document.createElement('option');
@@ -940,7 +940,7 @@ function changeItemize(){
         }
         var min = 1,
         max = 50,
-        select = document.getElementById('p_MLPRegressor_s3');
+        select = document.getElementById('p_MLPRegressor_7_val');
 
         for (var i = min; i<=max; i++){
           var opt = document.createElement('option');
@@ -950,7 +950,7 @@ function changeItemize(){
         }
         var min = 100,
         max = 5000,
-        select = document.getElementById('p_MLPRegressor_s4');
+        select = document.getElementById('p_MLPRegressor_8_val');
 
         for (var i = min; i<=max; i+=50){
           var opt = document.createElement('option');
@@ -1126,7 +1126,7 @@ function changeItemize(){
         $('#p_NuSVR_4').hide(); 
         var min = 2,
         max = 2000,
-        select = document.getElementById('p_RandomForestRegressor_s');
+        select = document.getElementById('p_RandomForestRegressor_1_val');
 
         for (var i = min; i<=max; i++){
           var opt = document.createElement('option');
@@ -1868,7 +1868,7 @@ function changeItemize(){
           $('#c_GradientBoostingClassifier_4').hide();
           var min = 2,
           max = 50,
-          select = document.getElementById('c_KNeighborsClassifier_s');
+          select = document.getElementById('c_KNeighborsClassifier_1_val');
 
           for (var i = min; i<=max; i++){
             var opt = document.createElement('option');
@@ -1963,7 +1963,7 @@ function changeItemize(){
           $('#c_KNeighborsClassifier_4').hide();
           var min = 1,
           max = 50,
-          select = document.getElementById('c_MLPClassifier_s1');
+          select = document.getElementById('c_MLPClassifier_5_val');
 
           for (var i = min; i<=max; i++){
             var opt = document.createElement('option');
@@ -1973,7 +1973,7 @@ function changeItemize(){
           }
           var min = 1,
           max = 50,
-          select = document.getElementById('c_MLPClassifier_s2');
+          select = document.getElementById('c_MLPClassifier_6_val');
 
           for (var i = min; i<=max; i++){
             var opt = document.createElement('option');
@@ -1983,7 +1983,7 @@ function changeItemize(){
           }
           var min = 1,
           max = 50,
-          select = document.getElementById('c_MLPClassifier_s3');
+          select = document.getElementById('c_MLPClassifier_7_val');
 
           for (var i = min; i<=max; i++){
             var opt = document.createElement('option');
@@ -1993,7 +1993,7 @@ function changeItemize(){
           }
           var min = 100,
           max = 5000,
-          select = document.getElementById('c_MLPClassifier_s4');
+          select = document.getElementById('c_MLPClassifier_8_val');
 
           for (var i = min; i<=max; i+=50){
             var opt = document.createElement('option');
@@ -2175,7 +2175,7 @@ function changeItemize(){
           $('#c_NuSVC_4').hide();
           var min = 2,
           max = 2000,
-          select = document.getElementById('c_RandomForestClassifier_s');
+          select = document.getElementById('c_RandomForestClassifier_1_val');
 
           for (var i = min; i<=max; i++){
             var opt = document.createElement('option');
@@ -2338,79 +2338,77 @@ function loadData(){
   var p_AdaBoostRegressor_1 = $('#p_AdaBoostRegressor_1_val').val();
   var p_AdaBoostRegressor_2 = $('#p_AdaBoostRegressor_2_val').val(); 
   var p_BaggingRegressor_1 = $('#p_BaggingRegressor_1_val').val();   
+  var p_BaggingRegressor_2 = $('#p_BaggingRegressor_2_val').val();   
+  var p_DecisionTree_1 = $('#p_DecisionTree_1_val').val();   
+  var p_DecisionTree_2 = $('#p_DecisionTree_2_val').val();   
+  var p_GradientBoostingRegressor_1 = $('#p_GradientBoostingRegressor_1_val').val();   
+  var p_GradientBoostingRegressor_2 = $('#p_GradientBoostingRegressor_2_val').val();   
+  var p_GradientBoostingRegressor_3 = $('#p_GradientBoostingRegressor_3_val').val();   
+  var p_GradientBoostingRegressor_4 = $('#p_GradientBoostingRegressor_4_val').val();   
+  var p_GradientBoostingRegressor_5 = $('#p_GradientBoostingRegressor_5_val').val();   
+  var p_KNeighborsRegressor_1 = $('#p_KNeighborsRegressor_1_val').val();   
+  var p_KNeighborsRegressor_2 = $('#p_KNeighborsRegressor_2_val').val();   
+  var p_KNeighborsRegressor_3 = $('#p_KNeighborsRegressor_3_val').val();   
+  var p_KNeighborsRegressor_4 = $('#p_KNeighborsRegressor_4_val').val();   
+  var p_MLPRegressor_1 = $('#p_MLPRegressor_1_val').val();   
+  var p_MLPRegressor_2 = $('#p_MLPRegressor_2_val').val();   
+  var p_MLPRegressor_3 = $('#p_MLPRegressor_3_val').val();   
+  var p_MLPRegressor_4 = $('#p_MLPRegressor_4_val').val();   
+  var p_MLPRegressor_5 = $('#p_MLPRegressor_5_val').val();   
+  var p_MLPRegressor_6 = $('#p_MLPRegressor_6_val').val();   
+  var p_MLPRegressor_7 = $('#p_MLPRegressor_7_val').val();   
+  var p_MLPRegressor_8 = $('#p_MLPRegressor_8_val').val();   
+  var p_MLPRegressor_9 = $('#p_MLPRegressor_9_val').val();   
+  var p_NuSVR_1 = $('#p_NuSVR_1_val').val();   
+  var p_NuSVR_2 = $('#p_NuSVR_2_val').val();   
+  var p_NuSVR_3 = $('#p_NuSVR_3_val').val();   
+  var p_NuSVR_4 = $('#p_NuSVR_4_val').val();   
+  var p_RandomForestRegressor_1 = $('#p_RandomForestRegressor_1_val').val();   
+  var p_RandomForestRegressor_2 = $('#p_RandomForestRegressor_2_val').val();   
+  var p_RandomForestRegressor_3 = $('#p_RandomForestRegressor_3_val').val();   
+  var p_RandomForestRegressor_4 = $('#p_RandomForestRegressor_4_val').val();   
+  var p_RandomForestRegressor_5 = $('#p_RandomForestRegressor_5_val').val();   
+  var p_SVR_1 = $('#p_SVR_1_val').val();   
+  var p_SVR_2 = $('#p_SVR_2_val').val();  
+  var p_SVR_3 = $('#p_SVR_3_val').val();  
   
-  $('#p_BaggingRegressor_2').val();   
-  $('#p_DecisionTree_1').val();
-  $('#p_DecisionTree_2').val(); 
-  $('#p_GradientBoostingRegressor_1').val(); 
-  $('#p_GradientBoostingRegressor_2').val(); 
-  $('#p_GradientBoostingRegressor_3').val(); 
-  $('#p_GradientBoostingRegressor_4').val(); 
-  $('#p_GradientBoostingRegressor_5').val(); 
-  $('#p_KNeighborsRegressor_1').val();
-  $('#p_KNeighborsRegressor_2').val();
-  $('#p_KNeighborsRegressor_3').val();
-  $('#p_KNeighborsRegressor_4').val();
-  $('#p_MLPRegressor_1').val();
-  $('#p_MLPRegressor_2').val();
-  $('#p_MLPRegressor_3').val();
-  $('#p_MLPRegressor_4').val();
-  $('#p_MLPRegressor_5').val();
-  $('#p_MLPRegressor_6').val();
-  $('#p_MLPRegressor_7').val();
-  $('#p_MLPRegressor_8').val();
-  $('#p_MLPRegressor_9').val();
-  $('#p_NuSVR_1').val();
-  $('#p_NuSVR_2').val();
-  $('#p_NuSVR_3').val();
-  $('#p_NuSVR_4').val();
-  $('#p_RandomForestRegressor_1').val();
-  $('#p_RandomForestRegressor_2').val();
-  $('#p_RandomForestRegressor_3').val();
-  $('#p_RandomForestRegressor_4').val();
-  $('#p_RandomForestRegressor_5').val();
-  $('#p_SVR_1').val();
-  $('#p_SVR_2').val();
-  $('#p_SVR_3').val();
-
-  $('#c_validation').val();
-  $('#c_AdaBoostClassifier_1').val();
-  $('#c_AdaBoostClassifier_2').val();
-  $('#c_BaggingClassifier_1').val();
-  $('#c_BaggingClassifier_2').val();
-  $('#c_DecisionTree_1').val();
-  $('#c_DecisionTree_2').val();
-  $('#c_GradientBoostingClassifier_1').val();
-  $('#c_GradientBoostingClassifier_2').val();
-  $('#c_GradientBoostingClassifier_3').val();
-  $('#c_GradientBoostingClassifier_4').val();
-  $('#c_KNeighborsClassifier_1').val();
-  $('#c_KNeighborsClassifier_2').val();
-  $('#c_KNeighborsClassifier_3').val();
-  $('#c_KNeighborsClassifier_4').val();
-  $('#c_MLPClassifier_1').val();
-  $('#c_MLPClassifier_2').val();
-  $('#c_MLPClassifier_3').val();
-  $('#c_MLPClassifier_4').val();
-  $('#c_MLPClassifier_5').val();
-  $('#c_MLPClassifier_6').val();
-  $('#c_MLPClassifier_7').val();
-  $('#c_MLPClassifier_8').val();
-  $('#c_MLPClassifier_9').val();
-  $('#c_NuSVC_1').val();
-  $('#c_NuSVC_2').val();
-  $('#c_NuSVC_3').val();
-  $('#c_NuSVC_4').val();
-  $('#c_RandomForestClassifier_1').val();
-  $('#c_RandomForestClassifier_2').val();
-  $('#c_RandomForestClassifier_3').val();
-  $('#c_RandomForestClassifier_4').val();
-  $('#c_RandomForestClassifier_5').val();
-  $('#c_SVC_1').val();
-  $('#c_SVC_2').val();
-  $('#c_SVC_3').val();
-  $('#c_SVC_4').val();
-
+  var c_AdaBoostClassifier_1 = $('#c_AdaBoostClassifier_1_val').val();  
+  var c_AdaBoostClassifier_2 = $('#c_AdaBoostClassifier_2_val').val();  
+  var c_BaggingClassifier_1 = $('#c_BaggingClassifier_1_val').val();  
+  var c_BaggingClassifier_2 = $('#c_BaggingClassifier_2_val').val();  
+  var c_DecisionTree_1 = $('#c_DecisionTree_1_val').val();  
+  var c_DecisionTree_2 = $('#c_DecisionTree_2_val').val();  
+  var c_GradientBoostingClassifier_1 = $('#c_GradientBoostingClassifier_1_val').val();  
+  var c_GradientBoostingClassifier_2 = $('#c_GradientBoostingClassifier_2_val').val();  
+  var c_GradientBoostingClassifier_3 = $('#c_GradientBoostingClassifier_3_val').val();  
+  var c_GradientBoostingClassifier_4 = $('#c_GradientBoostingClassifier_4_val').val();  
+  var c_KNeighborsClassifier_1 = $('#c_KNeighborsClassifier_1_val').val();  
+  var c_KNeighborsClassifier_2 = $('#c_KNeighborsClassifier_2_val').val();  
+  var c_KNeighborsClassifier_3 = $('#c_KNeighborsClassifier_3_val').val();  
+  var c_KNeighborsClassifier_4 = $('#c_KNeighborsClassifier_4_val').val();  
+  var c_MLPClassifier_1 = $('#c_MLPClassifier_1_val').val();  
+  var c_MLPClassifier_2 = $('#c_MLPClassifier_2_val').val();  
+  var c_MLPClassifier_3 = $('#c_MLPClassifier_3_val').val();  
+  var c_MLPClassifier_4 = $('#c_MLPClassifier_4_val').val();  
+  var c_MLPClassifier_5 = $('#c_MLPClassifier_5_val').val();  
+  var c_MLPClassifier_6 = $('#c_MLPClassifier_6_val').val();  
+  var c_MLPClassifier_7 = $('#c_MLPClassifier_7_val').val();  
+  var c_MLPClassifier_8 = $('#c_MLPClassifier_8_val').val();  
+  var c_MLPClassifier_9 = $('#c_MLPClassifier_9_val').val();  
+  var c_NuSVC_1 = $('#c_NuSVC_1_val').val();  
+  var c_NuSVC_2 = $('#c_NuSVC_2_val').val();  
+  var c_NuSVC_3 = $('#c_NuSVC_3_val').val();  
+  var c_NuSVC_4 = $('#c_NuSVC_4_val').val();  
+  var c_RandomForestClassifier_1 = $('#c_RandomForestClassifier_1_val').val();  
+  var c_RandomForestClassifier_2 = $('#c_RandomForestClassifier_2_val').val();  
+  var c_RandomForestClassifier_3 = $('#c_RandomForestClassifier_3_val').val();  
+  var c_RandomForestClassifier_4 = $('#c_RandomForestClassifier_4_val').val();  
+  var c_RandomForestClassifier_5 = $('#c_RandomForestClassifier_5_val').val();  
+  var c_SVC_1 = $('#c_SVC_1_val').val();  
+  var c_SVC_2 = $('#c_SVC_2_val').val();  
+  var c_SVC_3 = $('#c_SVC_3_val').val();  
+  var c_SVC_4 = $('#c_SVC_4_val').val();  
+  
   console.log(p_AdaBoostRegressor_1)
   $.ajax({
     method: "GET",
@@ -2420,6 +2418,75 @@ function loadData(){
       p_AdaBoostRegressor_1,
       p_AdaBoostRegressor_2,
       p_BaggingRegressor_1,
+      p_BaggingRegressor_2,
+      p_DecisionTree_1,
+      p_DecisionTree_2,
+      p_GradientBoostingRegressor_1,
+      p_GradientBoostingRegressor_2,
+      p_GradientBoostingRegressor_3,
+      p_GradientBoostingRegressor_4,
+      p_GradientBoostingRegressor_5,
+      p_KNeighborsRegressor_1,
+      p_KNeighborsRegressor_2,
+      p_KNeighborsRegressor_3,
+      p_KNeighborsRegressor_4,
+      p_MLPRegressor_1,
+      p_MLPRegressor_2,
+      p_MLPRegressor_3,
+      p_MLPRegressor_4,
+      p_MLPRegressor_5,
+      p_MLPRegressor_6,
+      p_MLPRegressor_7,
+      p_MLPRegressor_8,
+      p_MLPRegressor_9,
+      p_NuSVR_1,
+      p_NuSVR_2,
+      p_NuSVR_3,
+      p_NuSVR_4,
+      p_RandomForestRegressor_1,
+      p_RandomForestRegressor_2,
+      p_RandomForestRegressor_3,
+      p_RandomForestRegressor_4,
+      p_RandomForestRegressor_5,
+      p_SVR_1,
+      p_SVR_2,
+      p_SVR_3,
+      c_AdaBoostClassifier_1,
+      c_AdaBoostClassifier_2,
+      c_BaggingClassifier_1,
+      c_BaggingClassifier_2,
+      c_DecisionTree_1,
+      c_DecisionTree_2,
+      c_GradientBoostingClassifier_1,
+      c_GradientBoostingClassifier_2,
+      c_GradientBoostingClassifier_3,
+      c_GradientBoostingClassifier_4,
+      c_KNeighborsClassifier_1,
+      c_KNeighborsClassifier_2,
+      c_KNeighborsClassifier_3,
+      c_KNeighborsClassifier_4,
+      c_MLPClassifier_1,
+      c_MLPClassifier_2,
+      c_MLPClassifier_3,
+      c_MLPClassifier_4,
+      c_MLPClassifier_5,
+      c_MLPClassifier_6,
+      c_MLPClassifier_7,
+      c_MLPClassifier_8,
+      c_MLPClassifier_9,
+      c_NuSVC_1,
+      c_NuSVC_2,
+      c_NuSVC_3,
+      c_NuSVC_4,
+      c_RandomForestClassifier_1,
+      c_RandomForestClassifier_2,
+      c_RandomForestClassifier_3,
+      c_RandomForestClassifier_4,
+      c_RandomForestClassifier_5,
+      c_SVC_1,
+      c_SVC_2,
+      c_SVC_3,
+      c_SVC_4
     }
   }).done(function(info){
     var json_info = JSON.parse( info );
